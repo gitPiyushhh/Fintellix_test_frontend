@@ -102,6 +102,10 @@ body {
   padding: 1.5rem;
   border-radius: 5px;
   background-color: #eeeeef;
+
+  overflow-y: scroll;
+  height: 7rem;
+  justify-content: space-between;
 }
 
 .card__main-text {
@@ -110,4 +114,25 @@ body {
   font-style: normal;
   font-weight: 400;
   letter-spacing: 0.36px;
+}
+
+
+/* Hide the default scrollbar */
+.card__main::-webkit-scrollbar {
+  width: 8px; /* Width of the scrollbar */
+}
+/* Track */
+.card__main::-webkit-scrollbar-track {
+  background: #ffffff00; /* Color of the track */
+  border-radius: 2px;
+}
+/* Handle */
+.card__main::-webkit-scrollbar-thumb {
+  background: #1a7aaf; /* Color of the scrollbar handle */
+  border-radius: 2px; /* Rounded corners for the scrollbar handle */
+}
+
+/* Handle on hover */
+.card__main::-webkit-scrollbar-thumb:hover {
+  background: #0b608d; /* Color of the scrollbar handle on hover */
 }

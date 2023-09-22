@@ -1,0 +1,111 @@
+form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .form__inner-container {
+    width: 50%;
+    margin-left: 1rem;
+    padding: 2rem;
+    padding-top: 0;
+  }
+  
+  label {
+    margin-top: 1.25rem;
+    color: #000;
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 17.6px;
+  }
+
+  .form-container {
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px !important;
+  }
+
+  input[type="text"],
+  input[type="email"],
+  textarea {
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+  }
+  
+  .button-container-2 {
+    width: 100%;  
+    margin-top: 1.25rem;
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .add-button,
+  .cancel-button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    text-transform: uppercase;
+  }
+  
+  .add-button {
+    width: 45%;
+    background-color: #1a7aaf;
+    color: #fff;
+  }
+  
+  .form__input-box {
+    box-sizing: border-box;
+    display: block;
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #ccc !important;
+    border-radius: 3px;
+    width: 100%;
+  }
+  
+  .form__input-checkbox:active {
+    outline: none;
+  }
+  
+  label {
+    margin-bottom: 5px;
+  }
+  
+  .form__input-box:focus {
+    outline: 0.4px solid #1a7aaf;
+  }
+  
+  .cancel-button {
+    width: 45%;
+    background-color: #ccc;
+    color: #000;
+  }
+  
+  .add-button:hover {
+    background-color: #0056b3;
+  }
+  
+  .cancel-button:hover {
+    background-color: #b3b3b3;
+  }
+  
+  .user__button {
+      width: 100vw;
+      margin: auto;
+      display: flex;
+      justify-content: flex-end;
+  }
+  
+  .user__button-inner {
+      width: 80%;
+      margin: auto;
+      display: flex;
+      justify-self: flex-end;
+      margin-top: 1rem;
+  }
+  
+.u-margin-top {
+    margin-top: 3rem;
+  }

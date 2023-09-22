@@ -1,0 +1,18 @@
+/* Hide the default scrollbar */
+body::-webkit-scrollbar {
+  width: 8px; /* Width of the scrollbar */
+}
+/* Track */
+body::-webkit-scrollbar-track {
+  background: #f1f1f1; /* Color of the track */
+}
+/* Handle */
+body::-webkit-scrollbar-thumb {
+  background: #1a7aaf; /* Color of the scrollbar handle */
+  border-radius: 2px; /* Rounded corners for the scrollbar handle */
+}
+
+/* Handle on hover */
+body::-webkit-scrollbar-thumb:hover {
+  background: #0b608d; /* Color of the scrollbar handle on hover */
+}
