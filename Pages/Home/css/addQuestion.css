@@ -1,0 +1,25 @@
+/* styles.css */
+
+/* Style the label for better readability */
+label {
+    margin-right: 10px;
+}
+
+/* Style the select element */
+select {
+    padding: 10px; /* Adjust the padding as needed */
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    outline: none; /* Remove outline on focus */
+}
+
+/* Style select on hover */
+select:hover {
+    border-color: #666;
+}
+
+/* Style select when focused */
+select:focus {
+    border-color: #333;
+}

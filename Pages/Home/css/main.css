@@ -1,0 +1,113 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #fff
+}
+
+.u-flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.u-flex-col {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.main {
+  width: 100vw;
+}
+
+.main__inner {
+  width: 80vw;
+  margin: 0 auto;
+}
+
+.routes {
+  font-family: Inter;
+  font-size: 1.25rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 2.4rem;
+  margin-top: 2.5rem;
+}
+
+.cards-container {
+  width: 80vw;
+  margin-top: 2.5rem;
+}
+
+.card {
+  width: 32%;
+  border-radius: 0.8rem;
+  padding: 1.5rem;
+  padding-top: 2rem;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  cursor: pointer;
+}
+
+.card:hover {
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+.card:active {
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+
+.card__icon-container {
+  width: fit-content;
+  height: fit-content;
+  padding: 1.25rem;
+  border-radius: 50%;
+  background-color: #eeeeef;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card__icon {
+  width: 2rem;
+  height: auto;
+}
+
+.card__head-text--name {
+  color: #000;
+  font-family: Inter;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  letter-spacing: 0.36px;
+  align-self: flex-end;
+}
+
+.card__head-text--number {
+  color: var(--color-primary, #1a7aaf);
+  font-family: Inter;
+  font-size: 40px;
+  font-style: normal;
+  font-weight: 400;
+  letter-spacing: -1.6px;
+  align-self: flex-end;
+}
+
+.card__main {
+  margin-top: 2rem;
+  padding: 1.5rem;
+  border-radius: 5px;
+  background-color: #eeeeef;
+}
+
+.card__main-text {
+  font-family: Inter;
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 400;
+  letter-spacing: 0.36px;
+}

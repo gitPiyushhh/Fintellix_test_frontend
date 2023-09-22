@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Category Management</title>
+    
+    
+    <!-- Icons -->
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+
+    <!-- Kendo UI CSS -->
+
+    <script type="text/javascript" src="lib/jquery.min.js"></script>
+
+    <script type="text/javascript" src="lib/jquery.js"></script>
+
+    <!-- <script type="text/javascript" src="lib/select2.js"></script> -->
+
+    <link
+      rel="stylesheet"
+      type="text/css"
+      media="screen"
+      href="lib/jquery-ui.css"
+    />
+
+    <link
+      rel="stylesheet"
+      type="text/css"
+      media="screen"
+      href="lib/jquery-ui.min.css"
+    />
+
+    <!--Kendo-->
+
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="lib/kendo.default-v2.min.css"
+    />
+
+    <!-- <link rel="stylesheet" href="lib/kendo.common-material.min.css" />
+
+    <link rel="stylesheet" type="text/css" href="lib/kendo.material.min.css" />-->
+
+    <script type="text/javascript" src="./lib/kendo.all.min.js"></script>
+
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="css\font-awesome-4.7.0\css\font-awesome.min.css"
+    />
+
+    <!-- <link rel="stylesheet" type="text/css" href="css/font-awesome.css" />  -->
+
+    <link rel="stylesheet" type="text/css" media="screen" href="lib/vs.css" />
+    <link rel="stylesheet" href="./css/addQuestion.css" />
+    <link rel="stylesheet" href="./css/createUser.css" />
+    <link rel="stylesheet" href="./css/navbar.css" />
+    <link rel="stylesheet" href="./css/ulitlities.css" />
+
+    <script type="text/javascript" src="questionSection.js"></script>
+  </head>
+
+  <body>
+
+    <nav class="navbar">
+      <ul class="u-flex">
+        <a class="logo" href="./index.html" style="cursor: pointer">
+          <img
+            src="./../../Drawables/FIntellix Logo.svg"
+            alt="Website logo"
+            class="navbar__logo"
+          />
+        </a>
+        <div class="u-flex">
+          <li class="dropdown">
+            <a href="#" class="dropbtn">Home</a>
+          </li>
+          <li class="dropdown">
+            <a href="./questions.html" class="dropbtn">Questions</a>
+          </li>
+          <li class="dropdown">
+            <a href="./categories.html" class="dropbtn">Categories</a>
+          </li>
+          <li>
+            <a
+              href="#"
+              class="dropbtn"
+              style="text-decoration: none"
+              >Analytics</a
+            >
+          </li>
+
+          <li>
+            <a
+              href="#"
+              class="dropbtn"
+              style="text-decoration: none"
+              >Certifications</a
+            > 
+            
+          </li>
+          
+          <li>
+            <a
+              href="./user.html"
+              class="dropbtn"
+              style="text-decoration: none"
+              >Users</a
+            > 
+            
+          </li>
+
+          <li class="userAvatar" style="margin-left: 1rem;"></li>
+        </div>
+      </ul>
+    </nav>
+
+    <button id="addSection">Add Section</button>
+
+    <button id="showCategories">Show Categories</button>
+
+    <button id="loadAnalytics">Load Analytics</button>
+
+    <div class="wrapper" style="margin-top: 3rem">
+        <div class="form-container u-flex">
+          <div class="u-flex-col form__inner-container" style="width: 100%;">
+            <h1>Create question</h1>
+            <form action="#" method="post">
+              <label for="name">Question name:*</label>
+              <input type="text" id="name" name="name" class="form__input-box" required />
+  
+              <label for="difficulty">Select Difficulty:*</label>
+              <select id="difficulty" class="form__input-box" style="font-size: 14px;color: #565656; padding-right: 1rem;">
+                  <option disabled selected value="">Select from options</option>
+                  <option value="easy">Easy</option>
+                  <option value="medium">Medium</option>
+                  <option value="hard">Hard</option>
+              </select>
+  
+              <label for="category">Categories type:*</label>
+              <select id="category" class="form__input-box" style="font-size: 14px;color: #565656; padding-right: 1rem;">
+                  <option disabled selected value="">Select from options</option>
+                  <option value="easy">Programming</option>
+                  <option value="medium">Logical</option>
+                  <option value="hard">Aptitude</option>
+              </select>
+  
+              <label for="time">Time limit (in minutes):</label>
+              <input
+                type="number"
+                id="time"
+                name="email"
+                class="form__input-box"
+                required
+              />
+  
+              <label for="content">Question content:*</label>
+              <textarea
+              id="content"
+              name="question"
+              class="form__textarea"
+              required
+              ></textarea>
+  
+              <label for="content">Answers [////// For multiple /////]*</label>
+              <div class="u-flex" style=" justify-content: flex-start; align-items: baseline;">
+                  <input type="checkbox" id="isAdmin" name="multiple1" class="form__input-checkbox" style="margin-right: 0.75rem; width: 17px;
+                  height: 17px; margin-bottom: -100px;">
+                  </input>
+                  <input type="text" id="name" name="name" class="form__input-box" required />
+                  <iconify-icon icon="ic:outline-delete" class="icon" style="background-color: #FD462A; margin-left: 1rem;"></iconify-icon>
+              </div>
+  
+              <div class="u-flex" style=" justify-content: flex-start; align-items: baseline;">
+                  <input type="checkbox" id="isAdmin" name="multiple1" class="form__input-checkbox" style="margin-right: 0.75rem; width: 17px;
+                  height: 17px; margin-bottom: -100px;">
+                  </input>
+                  <input type="text" id="name" name="name" class="form__input-box" required />
+                  <iconify-icon icon="ic:outline-delete" class="icon" style="background-color: #FD462A; margin-left: 1rem;"></iconify-icon>
+              </div>
+              
+  
+              <a class="button u-flex" style="background-color: #1a7aaf; justify-self: flex-end; padding: 0.5rem 1.5rem;  width: fit-content; margin-top: 0.25rem;" href="./createQuestion.html">
+                  Add option
+                  <iconify-icon
+                    icon="zondicons:add-outline"
+                    style="margin-left: 8px"
+                  ></iconify-icon>
+                </a>
+  
+              <label for="content">Answers [////// For single /////]*</label>
+              <div class="u-flex" style=" justify-content: flex-start; align-items: baseline;">
+                  <input type="radio" id="single0" name="yesNoDropdown" class="form__input-checkbox" style="margin-right: 0.75rem; width: 17px;
+                  height: 17px; margin-bottom: -100px;">
+                  </input>
+                  <input type="text" id="" name="name" class="form__input-box" required />
+                  <iconify-icon icon="ic:outline-delete" class="icon" style="background-color: #FD462A; margin-left: 1rem;"></iconify-icon>
+              </div>
+  
+              <div class="u-flex" style=" justify-content: flex-start; align-items: baseline;">
+                  <input type="radio" id="single0" name="yesNoDropdown" class="form__input-checkbox" style="margin-right: 0.75rem; width: 17px;
+                  height: 17px; margin-bottom: -100px;">
+                  </input>
+                  <input type="text" id="" name="name" class="form__input-box" required />
+                  <iconify-icon icon="ic:outline-delete" class="icon" style="background-color: #FD462A; margin-left: 1rem;"></iconify-icon>
+              </div>
+              <a class="button u-flex" style="background-color: #1a7aaf; justify-self: flex-end; padding: 0.5rem 1.5rem;  width: fit-content; margin-top: 0.25rem;" href="./createQuestion.html">
+                  Add option
+                  <iconify-icon
+                    icon="zondicons:add-outline"
+                    style="margin-left: 8px"
+                  ></iconify-icon>
+                </a>
+  
+              <label for="content">Question content:*</label>
+              <textarea
+              id="content"
+              name="question"
+              class="form__textarea"
+              required
+              ></textarea>
+  
+              <div class="u-flex-col">
+                  <div class="u-flex" style="justify-content: flex;">
+              
+  
+                  
+              </div>
+              </div>
+  
+  
+              <div class="button-container-2">
+                <button type="submit" class="add-button">Add</button>
+                <button type="button" class="cancel-button">Cancel</button>
+              </div>
+  
+            </form>
+          </div>
+        </div>
+      </div>
+
+    <div id="questionPopup" class="modal">
+      <div class="modal-content">
+        <span id="closeQuestion" style="float: right; cursor: pointer"
+          >&times;</span
+        >
+
+        <div id="questionGrid"></div>
+      </div>
+    </div>
+
+    <div id="editCategoryPopUp" class="modal">
+      <div class="modal-content">
+        <span id="closeEditSection" style="float: right; cursor: pointer"
+          >&times;</span
+        >
+      </div>
+    </div>
+
+    <div id="questionPopup1" class="modal">
+      <div class="modal-content">
+        <span id="closeQuestionform" style="float: right; cursor: pointer"
+          >&times;</span
+        >
+
+        <h3>Check Questions to Add</h3>
+
+        <div id="questionGrid"></div>
+
+        <button id="addSelectedQuestions">Add Selected Questions</button>
+      </div>
+    </div>
+
+    <script>
+      function loadCategoryData() {
+        // Hard-coded categories
+
+        const categoriesArray = [
+          {
+            cid: 1,
+            sectionName: "Java Easy for Freshers",
+            category_type: "Programming",
+          },
+
+          {
+            cid: 2,
+            sectionName: "Java Test for 2-year Ex",
+            category_type: "Java",
+          },
+
+          {
+            cid: 3,
+            sectionName: "SQL Test for 2-year Ex",
+            category_type: "SQL",
+          },
+        ];
+
+        // Define a Kendo DataSource with the hard-coded data
+
+        const dataSource = new kendo.data.DataSource({
+          data: categoriesArray,
+        });
+
+        // Create and append a div for the grid to the main content
+
+        const mainContent = $("#main-content");
+
+        mainContent.empty(); // Clear the main content
+
+        const gridDiv = $("<div id='grid'></div>");
+
+        mainContent.append(gridDiv);
+
+        // Initialize the Kendo Grid inside the grid div
+
+        gridDiv.kendoGrid({
+          dataSource: dataSource,
+
+          columns: [
+            { field: "cid", title: "cid", width: "50px" },
+
+            { field: "sectionName", title: "sectionName", width: "200px" },
+
+            { field: "category_type", title: "Category Title", width: "200px" },
+
+            {
+              title: "Actions",
+
+              template: `
+
+                    <button class="k-button" onclick="loadquestionsSection(#: cid#)">ViewQuestions</button>
+
+                    <button class="k-button" onclick="editCategory(#: cid#)">Edit</button>
+
+                    <button class="k-button" onclick="deleteSection(#: cid#)">Delete</button>
+
+                   
+
+                `,
+
+              width: "200px",
+            },
+          ],
+
+          footer: "Total: #= kendo.toString(sum, 'c') #",
+        });
+      }
+
+      // Function to load the "Add New Category" form into the main-content
+
+      function loadAddCategoryForm() {
+        const mainContent = $("#main-content");
+
+        mainContent.empty(); // Clear the main content
+
+        const categoryForm = `
+
+        <div id="categoryDialog">
+
+            <h3>Add New Category</h3>
+
+            <form id="categoryForm">
+
+                <label for="sectionName">Section Name:</label>
+
+                <input type="text" id="sectionName" name="sectionName" required><br>
+
+ 
+
+                <label for="categoryType">Category Type:</label>
+
+                <select id="categoryType" name="categoryType" required>
+
+                    <option value="Programming">Programming</option>
+
+                    <option value="Java">Java</option>
+
+                    <option value="SQL">SQL</option>
+
+                    <!-- Add more options as needed -->
+
+                </select><br>
+
+ 
+
+                <label for="setTime">Set Time:</label>
+
+                <input type="text" id="setTime" name="setTime"><br>
+
+ 
+
+                <label for="passPercentage">Pass Percentage:</label>
+
+                <input type="text" id="passPercentage" name="passPercentage"><br>
+
+ 
+
+                <!-- Add button to open question popup -->
+
+                <button type="button" id="addQuestionsButton">Add Questions</button>
+
+            </form>
+
+        </div>
+
+    `;
+
+        mainContent.append(categoryForm);
+
+        // Create a Kendo DataSource with the hard-coded questions
+
+        const questionDataSource = new kendo.data.DataSource({
+          data: questions,
+        });
+
+        // Initialize the Kendo Grid for questions
+
+        $("#categoryDialog").kendoGrid({
+          dataSource: questionDataSource,
+
+          columns: [
+            { field: "questionId", title: "Question ID" },
+
+            { field: "questionText", title: "Question Text" },
+
+            { field: "difficulty", title: "Difficulty" },
+
+            // Add more columns as needed
+
+            {
+              title: "Select",
+
+              template: '<input type="checkbox" class="question-checkbox" />',
+
+              width: 60,
+            },
+          ],
+        });
+
+        // Add click event handler for the "Add Questions" button
+
+        $("#addQuestionsButton").on("click", function () {
+          // Open the question popup with checkboxes
+
+          openQuestionPopup();
+        });
+      }
+
+      // Function to open the question popup
+
+      function openQuestionPopup() {
+        // Create a Kendo DataSource with the hard-coded questions
+
+        const questionDataSource = new kendo.data.DataSource({
+          data: questions,
+        });
+
+        // Initialize the Kendo Grid for questions with checkboxes
+
+        $("#questionPopup1").kendoGrid({
+          dataSource: questionDataSource,
+
+          columns: [
+            {
+              title: "Select",
+
+              template: '<input type="checkbox" class="question-checkbox" />',
+
+              width: 60,
+            },
+
+            { field: "questionId", title: "Question ID" },
+
+            { field: "questionText", title: "Question Text" },
+
+            { field: "difficulty", title: "Difficulty" },
+
+            // Add more columns as needed
+          ],
+        });
+
+        // Show the question popup
+
+        $("#questionPopup1").show("slow");
+      }
+
+      // Event handler for the "Show Categories" button click
+
+      $("#showCategories").on("click", function () {
+        loadCategoryData();
+      });
+
+      $("#addSection").on("click", function () {
+        loadAddCategoryForm();
+      });
+
+      $("#loadAnalytics").on("click", function () {
+        loadAnalyticsData();
+      });
+
+      function loadquestionsSection(cid) {
+        showQuestionsPopup();
+      }
+
+      function showQuestionsPopup() {
+        // Create a Kendo DataSource with the hard-coded questions
+
+        const questionDataSource = new kendo.data.DataSource({
+          data: questions,
+        });
+
+        // Initialize the Kendo Grid for questions
+
+        $("#questionGrid").kendoGrid({
+          dataSource: questionDataSource,
+
+          columns: [
+            { field: "questionId", title: "Question ID" },
+
+            { field: "questionText", title: "Question Text" },
+
+            { field: "difficulty", title: "Difficulty" },
+
+            // Add more columns as needed
+          ],
+        });
+
+        // Show the question popup
+
+        $("#questionPopup").show("slow");
+      }
+
+      $("#closeQuestion").on("click", function () {
+        // Hide the questionPopup modal
+
+        $("#questionPopup").hide();
+
+        // Clear the content of the questionGrid
+
+        $("#questionGrid").html("");
+      });
+
+      $("#closeEditSection").on("click", function () {
+        $("#editCategoryPopUp").css("display", "none");
+      });
+
+      $("#closeQuestionform").on("click", function () {
+        // Close the question popup
+
+        console.log("Done");
+
+        document.getElementById("questionPopup1").innerHTML = "";
+      });
+
+      function editCategory(cid) {
+        $("#editCategoryPopUp").css("display", "block");
+      }
+
+      function deleteCategory(cid) {}
+
+      const questions = [
+        { questionId: 1, questionText: "What is 2 + 2?", difficulty: "Easy" },
+
+        {
+          questionId: 2,
+          questionText: "What is the capital of France?",
+          difficulty: "Medium",
+        },
+
+        {
+          questionId: 3,
+          questionText: "What is the square root of 16?",
+          difficulty: "Easy",
+        },
+      ];
+
+      function loadAnalyticsData() {
+        const contentSection = document.querySelector("#main-content");
+
+        const getResultUrl = "/user/userResponses";
+
+        const resultArray = [
+          {
+            fullName: "John Doe",
+
+            examTitle: "Math Test",
+
+            submitDate: "2023-09-20",
+
+            totalMarks: 90,
+
+            passFail: "Pass",
+          },
+
+          {
+            fullName: "Alice Smith",
+
+            examTitle: "Science Quiz",
+
+            submitDate: "2023-09-19",
+
+            totalMarks: 75,
+
+            passFail: "Pass",
+          },
+
+          {
+            fullName: "Bob Johnson",
+
+            examTitle: "History Exam",
+
+            submitDate: "2023-09-18",
+
+            totalMarks: 60,
+
+            passFail: "Fail",
+          },
+
+          {
+            fullName: "Eve Williams",
+
+            examTitle: "English Test",
+
+            submitDate: "2023-09-17",
+
+            totalMarks: 85,
+
+            passFail: "Pass",
+          },
+
+          {
+            fullName: "Charlie Brown",
+
+            examTitle: "Geography Quiz",
+
+            submitDate: "2023-09-16",
+
+            totalMarks: 70,
+
+            passFail: "Pass",
+          },
+
+          {
+            fullName: "Grace Davis",
+
+            examTitle: "Chemistry Test",
+
+            submitDate: "2023-09-15",
+
+            totalMarks: 55,
+
+            passFail: "Fail",
+          },
+
+          {
+            fullName: "Frank Wilson",
+
+            examTitle: "Physics Exam",
+
+            submitDate: "2023-09-14",
+
+            totalMarks: 92,
+
+            passFail: "Pass",
+          },
+        ];
+
+        //     if (resultArray.length > 0) {
+
+        contentSection.innerHTML = "<h2>Results</h2>";
+
+        const grid = $("#main-content").kendoGrid({
+          dataSource: {
+            data: resultArray,
+
+            pageSize: 7,
+          },
+
+          height: 450,
+
+          sortable: true,
+
+          pageable: { pageSizes: true },
+
+          filterable: true,
+
+          columns: [
+            { field: "fullName", title: "Full Name" },
+
+            { field: "examTitle", title: "Exam Title" },
+
+            { field: "submitDate", title: "Date of Submission" },
+
+            { field: "totalMarks", title: "Total Marks" },
+
+            { field: "passFail", title: "Pass/Fail" },
+
+            {
+              title: "Actions",
+
+              template:
+                '<button class="k-button k-grid-view-analytic" onclick="viewUserAnalytic(this)">View Analytic</button>',
+            },
+          ],
+        });
+      }
+
+      //}})}
+    </script>
+  </body>
+</html>

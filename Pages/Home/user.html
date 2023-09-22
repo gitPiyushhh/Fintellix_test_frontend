@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+    <title>Fintellix Test | Users</title>
+    <link rel="stylesheet" href="./css/table.css" />
+    <link rel="stylesheet" href="./css/navbar.css" />
+    <link rel="stylesheet" href="./css/createUser.css">
+
+    <!-- Icons -->
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700&family=Open+Sans:ital,wght@0,300;0,400;0,500;1,300;1,600&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <nav class="navbar">
+      <ul class="u-flex">
+        <a class="logo" href="./index.html" style="cursor: pointer">
+          <img
+            src="./../../Drawables/FIntellix Logo.svg"
+            alt="Website logo"
+            class="navbar__logo"
+          />
+        </a>
+        <div class="u-flex">
+          <li class="dropdown">
+            <a href="#" class="dropbtn">Home</a>
+          </li>
+          <li class="dropdown">
+            <a
+              href="C:\Users\i42004\Downloads\test_project.zip\test_project"
+              class="dropbtn"
+              >Questions</a
+            >
+          </li>
+          <li class="dropdown">
+            <a href="#" class="dropbtn">Categories</a>
+          </li>
+          <li>
+            <a
+              href="#"
+              target="_blank"
+              class="dropbtn"
+              style="text-decoration: none"
+              >Analytics</a
+            >
+          </li>
+
+          <li>
+            <a
+              href="#"
+              target="_blank"
+              class="dropbtn"
+              style="text-decoration: none"
+              >Certifications</a
+            >
+          </li>
+
+          <li>
+            <a
+              href="./user.html"
+              target="_blank"
+              class="dropbtn"
+              style="text-decoration: none"
+              >Users</a
+            >
+          </li>
+
+          <li class="userAvatar" style="margin-left: 1rem"></li>
+        </div>
+      </ul>
+    </nav>
+
+    <div class="user__button">
+      <div class="user__button-inner" style="justify-content: flex-end;">
+        <a class="button u-flex" style="background-color: #1a7aaf; justify-self: flex-end; padding: 0.75rem 1.5rem; margin-top: 0.5rem;" href="./createUser.html">
+          Add user
+          <iconify-icon
+            icon="zondicons:add-outline"
+            style="margin-left: 8px"
+          ></iconify-icon>
+        </a>
+      </div>
+    </div>
+
+    <table class="custom-table">
+      <thead>
+        <tr>
+          <th>User name</th>
+          <th>Full name</th>
+          <th>Status</th>
+          <th>User role</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Lorem</td>
+          <td>Lorem</td>
+          <td>Active</td>
+          <td>Lorem</td>
+          <td
+            class="u-flex"
+            style="width: 25%; border: none; margin: auto"
+            id="u-less-margin"
+          >
+            <img
+              src="./../../Drawables/Edit.png"
+              alt=""
+              class="table-icon"
+              style="width: 1rem"
+            />
+            <img
+              src="./../../Drawables/Icon__del.png"
+              alt=""
+              class="table-icon"
+            />
+          </td>
+        </tr>
+        <!-- Add more rows as needed -->
+      </tbody>
+    </table>
+
+    <script src="./script.js"></script>
+  </body>
+</html>

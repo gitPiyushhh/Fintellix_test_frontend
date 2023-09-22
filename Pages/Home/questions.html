@@ -1,0 +1,300 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+  <head>
+    <script type="text/javascript" src="lib/jquery.min.js"></script>
+    <script type="text/javascript" src="lib/jquery.js"></script>
+    <script type="text/javascript" src="lib/select2.js"></script>
+
+    <link
+      rel="stylesheet"
+      type="text/css"
+      media="screen"
+      href="lib/jquery-ui.css"
+    />
+
+    <!-- Icons -->
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+
+    <link rel="stylesheet" href="./css/questionsCustom.css" />
+    <link rel="stylesheet" href="./css/ulitlities.css" />
+    <link rel="stylesheet" href="./css/navbar.css" />
+    <link rel="stylesheet" href="./css/main.css" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700&family=Open+Sans:ital,wght@0,300;0,400;0,500;1,300;1,600&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="stylesheet"
+      type="text/css"
+      media="screen"
+      href="lib/jquery-ui.min.css"
+    />
+    <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/font-awesome.css" />
+    <!--Kendo-->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="lib/kendo.default-v2.min.css"
+    />
+    <!-- <link rel="stylesheet" href="lib/kendo.common-material.min.css" />
+    <link rel="stylesheet" type="text/css" href="lib/kendo.material.min.css" /> -->
+
+    <script type="text/javascript" src="./lib/kendo.all.min.js"></script>
+    <link rel="stylesheet" type="text/css" media="screen" href="lib/vs.css" />
+
+    <script type="text/javascript" src="questionSection.js"></script>
+  </head>
+  <body>
+    <nav class="navbar">
+      <ul class="u-flex">
+        <a class="logo" href="./index.html" style="cursor: pointer">
+          <img
+            src="./../../Drawables/FIntellix Logo.svg"
+            alt="Website logo"
+            class="navbar__logo"
+          />
+        </a>
+        <div class="u-flex">
+          <li class="dropdown">
+            <a href="#" class="dropbtn">Home</a>
+          </li>
+          <li class="dropdown">
+            <a href="./questions.html" class="dropbtn">Questions</a>
+          </li>
+          <li class="dropdown">
+            <a href="#" class="dropbtn">Categories</a>
+          </li>
+          <li>
+            <a href="#" class="dropbtn" style="text-decoration: none"
+              >Analytics</a
+            >
+          </li>
+
+          <li>
+            <a href="#" class="dropbtn" style="text-decoration: none"
+              >Certifications</a
+            >
+          </li>
+
+          <li>
+            <a href="./user.html" class="dropbtn" style="text-decoration: none"
+              >Users</a
+            >
+          </li>
+
+          <li class="userAvatar" style="margin-left: 1rem"></li>
+        </div>
+      </ul>
+    </nav>
+
+    <!-- Add the Question -->
+    <div class="wrapper">
+      <div
+        class="questions__inner u-flex"
+        style="justify-content: flex-end; width: 80vw; margin-top: 2rem"
+      >
+      <a class="button u-flex" style="background-color: #1a7aaf; justify-self: flex-end; padding: 0.75rem 1.5rem; " href="./createQuestion.html">
+        Add question
+        <iconify-icon
+          icon="zondicons:add-outline"
+          style="margin-left: 8px"
+        ></iconify-icon>
+      </a>
+      </div>
+    </div>
+
+    <div class="cards-container u-flex" style="margin: 2rem auto">
+      <!-- Card-1 -->
+      <a class="card question__card" >
+        <div class="u-flex">
+          <div class="u-flex-col" style="margin-right: 0.5rem; padding-bottom: 1.2rem">
+            <h4
+              class="card__head-text--number"
+              style="font-size: 1.8rem; align-items: flex-start"
+            >
+              Single correct
+            </h4>
+            <p
+              class="card__head-text--name"
+              style="
+                margin-top: 0.5rem;
+                font-size: 0.8rem;
+                align-self: flex-start;
+              "
+            >
+              Type of questions 
+            </p>
+          </div>
+        </div>
+
+        <div class="u-flex-col card__main u-display-none" id="card1__box">
+          <div
+            class="u-flex"
+            style="justify-content: space-between; width: 100%"
+          >
+            <p class="card__main-text">1. Javascript is dynamic type</p>
+          </div>
+
+          <div
+            class="u-flex-col"
+            style="
+              justify-content: space-between;
+              width: 100%;
+              margin-top: 0.2rem;
+              align-items: flex-start;
+            "
+          >
+            <p class="card__main-text">
+              &nbsp; &nbsp; True: &nbsp; &nbsp;
+              <span style="color: #1a7aaf">&#10003;</span>
+            </p>
+            <p class="card__main-text">
+              &nbsp; &nbsp; False: &nbsp; &nbsp; &nbsp; &nbsp;
+            </p>
+          </div>
+        </div>
+      </a>
+
+      <!-- Card-2 -->
+      <a class="card question__card">
+        <div class="u-flex">
+          <div class="u-flex-col" style="margin-right: 0.5rem">
+            <h4
+              class="card__head-text--number"
+              style="font-size: 1.8rem; align-items: flex-start"
+            >
+              Mutliple correct
+            </h4>
+            <p
+              class="card__head-text--name"
+              style="
+                margin-top: 0.5rem;
+                font-size: 0.8rem;
+                align-self: flex-start;
+              "
+            >
+              Type of questions 
+            </p>
+          </div>
+        </div>
+
+        <div class="u-flex-col card__main">
+          <div
+            class="u-flex"
+            style="justify-content: space-between; width: 100%"
+          >
+            <p class="card__main-text">2. Select all dynamic typed languages</p>
+          </div>
+
+          <div
+            class="u-flex-col"
+            style="
+              justify-content: space-between;
+              width: 100%;
+              margin-top: 0.2rem;
+              align-items: flex-start;
+            "
+          >
+            <div class="u-flex">
+              <div >
+                <p class="card__main-text">
+                  Javacript: &nbsp; &nbsp;
+                  <span style="color: #1a7aaf">&#10003;</span>
+                </p>
+                <p class="card__main-text">
+                   Java: &nbsp; &nbsp; &nbsp; &nbsp;
+                </p>
+              </div>
+
+              <div>
+                <p class="card__main-text">
+                  &nbsp; &nbsp; Python: &nbsp; &nbsp;
+                  <span style="color: #1a7aaf">&#10003;</span>
+                </p>
+                <p class="card__main-text">
+                  &nbsp; &nbsp; C++: &nbsp; &nbsp; &nbsp; &nbsp;
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </a>
+
+      <!-- Card-3 -->
+      <a class="card question__card">
+        <div class="u-flex">
+          <div class="u-flex-col" style="margin-right: 0.5rem">
+            <h4
+              class="card__head-text--number"
+              style="font-size: 1.8rem; align-items: flex-start"
+            >
+              Programming
+            </h4>
+            <p
+              class="card__head-text--name"
+              style="
+                margin-top: 0.5rem;
+                font-size: 0.8rem;
+                align-self: flex-start;
+              "
+            >
+              Type of questions 
+            </p>
+          </div>
+        </div>
+
+        <div class="u-flex-col card__main">
+          <div
+            class="u-flex"
+            style="justify-content: space-between; width: 100%"
+          >
+            <p class="card__main-text">1. Write a program to add 2 nums</p>
+          </div>
+
+          <div
+            class="u-flex-col"
+            style="
+              justify-content: space-between;
+              width: 100%;
+              margin-top: 0.2rem;
+              align-items: flex-start;
+            "
+          >
+            <p class="card__main-text">
+              &nbsp; &nbsp; &nbsp; &nbsp;
+              <span style="color: #1a7aaf"></span>
+            </p>
+            <p class="card__main-text">
+              &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+            </p>
+          </div>
+        </div>
+      </a>
+    </div>
+
+    <!-- Grid  -->
+    <div id="newgrid" class="u-margin-top-3 grid"></div>
+  </body>
+
+  <script>
+    function autoExpand() {
+      const textarea = document.getElementById("autoExpandTextarea");
+      textarea.style.height = "auto";
+      textarea.style.height = textarea.scrollHeight + "px";
+    }
+
+    // Add event listeners to the textarea
+    const textarea = document.getElementById("autoExpandTextarea");
+    textarea.addEventListener("input", autoExpand);
+
+    function showCard() {
+      const card1 = document.getElementById('card1__box');
+      card1.style.display('block');
+    }
+  </script>
+</html>

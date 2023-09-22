@@ -1,0 +1,62 @@
+.u-flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.button {
+  /* background-color: rgba(255, 187, 1, 0.726);   */
+  background-color: #6c63ff;
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  padding: 20px;
+
+  font-size: 16px;
+  font-weight: 600;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  cursor: pointer;
+  /* color: rgba(0, 0, 0, 0.733); */
+  color: whitesmoke;
+  text-decoration: none;
+  font-family: "inter";
+}
+
+#autoExpandTextarea {
+  overflow-y: hidden;
+  padding: 10px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+  width: 70%;
+}
+
+.text-box {
+  display: flex;
+  align-items: center;
+}
+
+#myInput {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+#deleteButton {
+  background-color: #f44336;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 20px;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+#deleteButton:hover {
+  background-color: #ff5733;
+}
+
+.question__card:hover #card1__box {
+  display: block !important;
+}
+

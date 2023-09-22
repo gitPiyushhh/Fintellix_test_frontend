@@ -1,0 +1,30 @@
+/* styles.css */
+
+.custom-table {
+    width: 80%;
+    border-collapse: collapse;
+    margin: 1.5rem auto;
+    font-family: Arial, sans-serif;
+    border: 1px solid #ddd;
+}
+
+.u-less-margin {
+    margin: 10px 5px;
+}
+
+.custom-table th,
+.custom-table td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: center;
+}
+
+.custom-table thead {
+    background-color: #E6F0F6;
+}
+
+.table-icon {
+    width: 0.8rem;
+    height: auto;
+    cursor: pointer;
+}
