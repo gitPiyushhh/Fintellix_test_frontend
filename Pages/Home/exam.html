@@ -23,6 +23,7 @@
     <script type="text/javascript" src="lib/jquery.min.js"></script>
 
     <script type="text/javascript" src="lib/jquery.js"></script>
+    <script src=".//js/components/questions.js"></script>
 
     <!-- <script type="text/javascript" src="lib/select2.js"></script> -->
 
@@ -64,87 +65,40 @@
     <link rel="stylesheet" href="./css/ulitlities.css" />
     <link rel="stylesheet" href="./css/form.css" />
     <link rel="stylesheet" href="./css/popup.css" />
+    <link rel="stylesheet" href="./css/questionsCustom.css" />
+    <link rel="stylesheet" href="./css/exam.css" />
     <link rel="stylesheet" href="./css/scrollbar.css" />
 
     <script type="text/javascript" src="questionSection.js"></script>
   </head>
   <body>
-    <div class="overlay u-display-none" id="categories__overlay">
-      <div id="selectSectionPopup" class="popup">
+    <div class="overlay u-display-none" id="overlay__exams">
+      <div
+        id="questionPopup"
+        class="popup"
+        style="transform: translateY(-15px)"
+      >
         <div class="popup__content">
           <span
-            id="closeQuestion"
+            id="closeChoseOverlay__exam"
             class="popup__icon"
             style="float: right; cursor: pointer"
             >&times;</span
           >
 
-          <h3 class="popup__title">Questions</h3>
+          <h3 class="popup__title">Available sections</h3>
 
-          <div id="addQuestionsGrid" class="popup__content"></div>
-        </div>
-      </div>
-    </div>
+          <div id="midGrid__exam" class="popup__content"></div>
 
-    <div class="overlay u-display-none" id="editCategoryPopup">
-      <div
-        class="form-container u-flex"
-        style="height: 80%; position: relative"
-      >
-        <div class="u-flex-col form__inner-container" style="width: 100%">
-          <h1>Create section</h1>
-          <span
-            id="closeEditQuestion"
-            class="popup__icon"
-            style="float: right; cursor: pointer"
-            >&times;</span
-          >
-
-          <form action="#" method="post">
-            <label for="name">Section name:*</label>
-            <input
-              type="text"
-              id="name"
-              name="name"
-              class="form__input-box"
-              required
-            />
-
-            <label for="category">Categories type:*</label>
-            <select
-              id="category"
-              class="form__input-box"
-              style="font-size: 14px; color: #565656; padding-right: 1rem"
+          <div class="u-flex" style="justify-content: center;">
+            <button
+              class="popup__button"
+              style="margin-top: 1.6rem; padding: 0.7rem 1.5rem"
+              id="popup__button"
             >
-              <option disabled selected value="">Select from options</option>
-              <option value="easy">Programming</option>
-              <option value="medium">Logical</option>
-              <option value="hard">Aptitude</option>
-            </select>
-
-            <label for="time">Time limit (in minutes):</label>
-            <input
-              type="number"
-              id="time"
-              name="email"
-              class="form__input-box"
-              required
-            />
-
-            <label for="time">Pass percentage:</label>
-            <input
-              type="number"
-              id="time"
-              name="email"
-              class="form__input-box"
-              required
-            />
-
-            <div class="button-container-2">
-              <button type="submit" class="add-button">Add</button>
-              <button type="button" class="cancel-button">Cancel</button>
-            </div>
-          </form>
+              Done
+            </button>
+          </div>
         </div>
       </div>
     </div>
@@ -175,9 +129,7 @@
           </li>
 
           <li>
-            <a href="#" class="dropbtn" style="text-decoration: none"
-              >Certifications</a
-            >
+            <a href="#" class="dropbtn" style="text-decoration: none">Exams</a>
           </li>
 
           <li>
@@ -202,9 +154,9 @@
             margin-top: 0.5rem;
           "
           href="#"
-          id="showCategoriesButton"
+          id="show__cards__exam"
         >
-          Add Section
+          Add Exam
           <iconify-icon
             icon="zondicons:add-outline"
             style="margin-left: 8px"
@@ -213,170 +165,215 @@
       </div>
     </div>
 
+    <div id="mainContentExam"></div>
+
+    <!-- Form -->
     <div
       class="wrapper u-display-none"
-      style="margin-top: 3rem"
-      id="categories__main-content"
+      style="margin-top: 2rem"
+      id="create__new__exam"
     >
-      <div class="form-container u-flex" style="position: relative">
-        <div
-          class="u-flex-col form__inner-container"
-          style="width: 100%; margin-top: 2rem"
-        >
-          <h1>Create section</h1>
-          <span
-            id="closeMainContent"
-            class="popup__icon"
-            style="float: right; cursor: pointer"
-            >&times;</span
-          >
-
-          <form action="#" method="post">
-            <label for="name">Section name:*</label>
-            <input
-              type="text"
-              id="name"
-              name="name"
-              class="form__input-box"
-              required
-            />
-
-            <label for="category">Categories type:*</label>
-            <select
-              id="category"
-              class="form__input-box"
-              style="font-size: 14px; color: #565656; padding-right: 1rem"
+      <div class="u-flex-col" style="width: 100vw">
+        <div class="user__button">
+          <div class="user__button-inner" style="justify-content: flex-end">
+            <a
+              class="button u-flex"
+              style="
+                background-color: transparent;
+                border: 1px solid #1a7aaf;
+                color: #1a7aaf;
+                justify-self: flex-end;
+                padding: 0.75rem 1.5rem;
+                margin-top: -2rem;
+                box-shadow: none;
+              "
+              href="#"
+              id="create__new__exam__button"
             >
-              <option disabled selected value="">Select from options</option>
-              <option value="easy">Programming</option>
-              <option value="medium">Logical</option>
-              <option value="hard">Aptitude</option>
-            </select>
+              Add a new section
+              <iconify-icon
+                icon="zondicons:add-outline"
+                style="margin-left: 8px"
+              ></iconify-icon>
+            </a>
+          </div>
+        </div>
 
-            <label for="time">Time limit (in minutes):</label>
-            <input
-              type="number"
-              id="time"
-              name="email"
-              class="form__input-box"
-              required
-            />
+        <div class="exam__content u-flex">
+          <div class="exam__card card" style="position: relative">
+            <span
+              id="closeChoseOverlay"
+              class="popup__icon"
+              style="float: right; cursor: pointer; top: 10px; right: 10px"
+              >&times;</span
+            >
 
-            <label for="time">Pass percentage:</label>
-            <input
-              type="number"
-              id="time"
-              name="email"
-              class="form__input-box"
-              required
-            />
-
-            <div class="button-container-2">
-              <button type="submit" class="add-button" id="addQuestionsButton">
-                Add
-              </button>
-              <button type="button" class="cancel-button">Cancel</button>
+            <h6 class="exam__title">Java basics</h6>
+            <div
+              class="u-flex-col card__inner"
+              style="
+                justify-content: space-between;
+                width: 100%;
+                margin-top: 0.2rem;
+                align-items: flex-start;
+              "
+            >
+              <p
+                class="card__main-text exam__card--text"
+                style="color: #1a7aaf"
+              >
+                Total questions:
+                <span style="color: #565656; margin-top: 0; font-weight: bold">
+                  99</span
+                >
+              </p>
             </div>
+          </div>
 
-            <div class="button-container-2">
-                <button type="submit" class="add-button" id="addQuestionsButton">
-                  Choose from questions
-                </button>
+          <div class="exam__card card">
+            <h6 class="exam__title">Java basics</h6>
+            <div
+              class="u-flex-col card__inner"
+              style="
+                justify-content: space-between;
+                width: 100%;
+                margin-top: 0.2rem;
+                align-items: flex-start;
+              "
+            >
+              <p
+                class="card__main-text exam__card--text"
+                style="color: #1a7aaf"
+              >
+                Total questions:
+                <span style="color: #565656; margin-top: 0; font-weight: bold">
+                  99</span
+                >
+              </p>
+
+              <p
+                class="card__main-text exam__card--text"
+                style="margin-top: 0.8rem; color: #1a7aaf"
+              ></p>
             </div>
+          </div>
 
+          <div class="exam__card card">
+            <h6 class="exam__title">Java basics</h6>
+            <div
+              class="u-flex-col card__inner"
+              style="
+                justify-content: space-between;
+                width: 100%;
+                margin-top: 0.2rem;
+                align-items: flex-start;
+              "
+            >
+              <p
+                class="card__main-text exam__card--text"
+                style="color: #1a7aaf"
+              >
+                Total questions:
+                <span style="color: #565656; margin-top: 0; font-weight: bold">
+                  99</span
+                >
+              </p>
+            </div>
+          </div>
+        </div>
 
-          </form>
+        <div class="form-container u-flex" style="margin: 3.5rem auto">
+          <div class="u-flex-col form__inner-container" style="width: 100%">
+            <h1>Create new Exam</h1>
+            <form action="#" method="post">
+              <div
+                class="u-flex"
+                style="width: 35%; align-items: baseline; margin-top: 1rem"
+              >
+                <label
+                  for="name"
+                  style="
+                    font-family: Inter;
+                    font-size: 18px;
+                    font-style: normal;
+                    font-weight: 400;
+                    line-height: 17.6px;
+                  "
+                  >Question name:</label
+                >
+                <label class="toggle" style="margin-bottom: -0.1px">
+                  <input class="toggle-input" type="checkbox" />
+                  <span class="toggle-label"></span>
+                  <span class="toggle-handle"></span>
+                </label>
+              </div>
+
+              <label for="nameExam" style="margin-top: 1.8rem"
+                >Name of exam:</label
+              >
+              <input
+                type="text"
+                id="nameExam"
+                name="marks"
+                class="form__input-box"
+                required
+              />
+
+              <label for="cheating"
+                >Chances allowed if new tab opened / tab-switched:</label
+              >
+              <input
+                type="number"
+                id="cheating"
+                name="marks"
+                class="form__input-box"
+                required
+              />
+
+              <label for="content">Test link:*</label>
+              <input
+                id="text"
+                name="question"
+                class="form__textarea form__input-box"
+                required
+              ></text>
+
+              <div class="u-flex-col">
+                <div class="u-flex" style="justify-content: flex"></div>
+              </div>
+
+              <div class="button-container-2">
+                <button type="submit" class="add-button">Add</button>
+                <button type="button" class="cancel-button" id="cancelAddExam">Cancel</button>
+              </div>
+            </form>
+          </div>
         </div>
       </div>
     </div>
 
     <!-- Grid  -->
-    <div class="wrapper">
-      <div
-        id="categories__grid"
-        style="margin-top: 1.5rem"
-        class="grid categories__grid"
-      ></div>
-    </div>
+    <div
+      id="outerGrid__exam"
+      style="margin-top: 1.5rem"
+      class="grid categories__grid"
+    ></div>
+
+    <!-- //////////////////////////////////////////////////
+    /////// -->
 
     <script>
-      //////////////////////////
-      //// Remove me
-      var questions = [
-        { questionId: 1, questionText: "What is 2 + 2?", difficulty: "Easy" },
+      /////////////////////////////////////////////
+      /// Table loading
 
-        {
-          questionId: 2,
-          questionText: "What is the capital of France?",
-          difficulty: "Medium",
-        },
+      // Global Data Source
+      let selectedRows = [];
 
-        {
-          questionId: 3,
-          questionText: "What is the square root of 16?",
-          difficulty: "Easy",
-        },
-      ];
+      // 1. Outer grid
+      function getOuterTable() {
+        console.log("started");
 
-      loadCategoryData();
-      console.log("Hiiiiiii");
-
-      ////////////////////////////////////
-      ////
-
-      const showCategoriesButton = document.getElementById(
-        "showCategoriesButton"
-      );
-      showCategoriesButton.addEventListener("click", () => {
-        const mainContent = document.getElementById("categories__main-content");
-        mainContent.classList.remove("u-display-none");
-      });
-
-      var closeMainContent = document.getElementById("closeMainContent");
-      closeMainContent.addEventListener("click", () => {
-        const mainContent = document.getElementById("categories__main-content");
-        mainContent.classList.add("u-display-none");
-      });
-
-      const showQuestionsButton = document.getElementById(
-        "addQuestionsButton"
-      );
-      showCategoriesButton.addEventListener("click", () => {
-        const mainContent = document.getElementById("categories__main-content");
-        mainContent.classList.remove("u-display-none");
-      });
-
-      closeMainContent = document.getElementById("closeMainContent");
-      closeMainContent.addEventListener("click", () => {
-        const mainContent = document.getElementById("categories__main-content");
-        mainContent.classList.add("u-display-none");
-      });
-
-      const closeEditQuestion = document.getElementById("closeEditQuestion");
-      closeEditQuestion.addEventListener("click", () => {
-        const overlay = document.getElementById("editCategoryPopup");
-        overlay.classList.add("u-display-none");
-
-        // const mainContent = document.getElementById("categories__main-content");
-        // mainContent.classList.remove("u-display-none");
-      });
-
-      const closeButton = document.getElementById("closeQuestion");
-      closeButton.addEventListener("click", () => {
-        console.log("Close button clicked");
-
-        const overlay = document.getElementById("categories__overlay");
-        overlay.classList.add("u-display-none");
-
-        // const mainContent = document.getElementById("categories__main-content");
-        // mainContent.classList.remove("u-display-none");
-      });
-
-      // Function to load the "Add New Category" form into the main-content
-
-      function loadCategoryData() {
         // Hard-coded categories
-
         const categoriesArray = [
           {
             cid: 1,
@@ -397,33 +394,24 @@
           },
         ];
 
-        // Define a Kendo DataSource with the hard-coded data
-
         const dataSource1 = new kendo.data.DataSource({
           data: categoriesArray,
         });
 
-        // Create and append a div for the grid to the main content
+        const mainContent = $("#outerGrid__exam");
 
-        const mainContent = $("#categories__grid");
+        mainContent.empty();
 
-        mainContent.empty(); // Clear the main content
-
-        //const gridDiv = $("<div id='grid'></div>");
         const gridDiv = $("<div id='grid'></div>");
 
         mainContent.append(gridDiv);
 
-        // Initialize the Kendo Grid inside the grid div
-
         gridDiv.kendoGrid({
           dataSource: dataSource1,
-
           height: 250,
           sortable: true,
           pageable: { pageSize: true },
           filterable: true,
-
           columns: [
             { field: "cid", title: "cid", width: "50px" },
 
@@ -433,342 +421,273 @@
 
             {
               title: "Actions",
-
               template: `
-              <button class="k-button" onclick="loadquestionsSection(#: cid#)">ViewQuestions</button>
-
-                    <button class="k-button" onclick="editCategory(#: cid#)">Edit</button>
-
-                    <button class="k-button" onclick="deleteSection(#: cid#)">Delete</button>
-    `,
+                      <button class="k-button" onclick="loadquestionsSection(#: cid#)">ViewQuestions</button>
+                            <button class="k-button" onclick="editCategory(#: cid#)">Edit</button>
+                            <button class="k-button" onclick="deleteSection(#: cid#)">Delete</button>
+            `,
               width: "200px",
             },
           ],
+          footer: "Total: #= kendo.toString(sum, 'c') #",
+        });
+      }
+      getOuterTable();
 
+      // 2. Inner table fetch
+
+      function getInnerTable() {
+        // Hard-coded categories
+        console.log(selectedRows);
+        const dataSource1 = new kendo.data.DataSource({
+          data: selectedRows,
+        });
+
+        console.log(selectedRows);
+        console.log(dataSource1);
+
+        const mainContent = $("#innerGrid ");
+
+        mainContent.empty();
+
+        const gridDiv = $("<div id='grid'></div>");
+
+        mainContent.append(gridDiv);
+
+        gridDiv.kendoGrid({
+          dataSource: dataSource1,
+          height: 250,
+          sortable: true,
+          pageable: { pageSize: true },
+          filterable: true,
+          columns: [
+            { field: "questionId", title: "Question ID" },
+            { field: "questionText", title: "Question Text" },
+            {
+              title: "Actions",
+              template: `
+                            <button class="k-button" onclick="deleteSection(#: questionId#)">Delete</button>
+            `,
+              width: "200px",
+            },
+          ],
           footer: "Total: #= kendo.toString(sum, 'c') #",
         });
       }
 
-      function loadAddCategoryForm() {
-        const mainContent = $("#main-content");
-
-        mainContent.empty(); // Clear the main content
-
-        const categoryForm = `
-    `;
-
-        mainContent.append(categoryForm);
-
-        // Create a Kendo DataSource with the hard-coded questions
-
-        const questionDataSource = new kendo.data.DataSource({
-          data: questions,
-        });
-
-        // Initialize the Kendo Grid for questions
-
-        $("#categoryDialog").kendoGrid({
-          dataSource: questionDataSource,
-
-          columns: [
-            { field: "questionId", title: "Question ID" },
-
-            { field: "questionText", title: "Question Text" },
-
-            { field: "difficulty", title: "Difficulty" },
-
-            // Add more columns as needed
-
-            {
-              title: "Select",
-
-              template: '<input type="checkbox" class="question-checkbox" />',
-
-              width: 60,
-            },
-          ],
-        });
-
-        // Add click event handler for the "Add Questions" button
-
-        $("#addQuestionsButton").on("click", function () {
-          // Open the question popup with checkboxes
-
-          openQuestionPopup();
-        });
+      function addSelectedQuestions() {
+        // Get all selected checkboxes
+        const selectedCheckboxes = $(".question-checkbox:checked"); // Extract and store selected question data
+        selectedQuestions = [];
+        selectedCheckboxes.each(function () {
+          const row = $(this).closest("tr");
+          const questionId = row.find("td:eq(1)").text();
+          // Assuming the question ID is in the second column
+          const questionText = row.find("td:eq(2)").text(); // Assuming the question text is in the third column        // Add the selected question to the array
+          selectedRows.push({
+            questionId: questionId,
+            questionText: questionText, // Add other properties as needed
+          });
+        }); // Close the question popup
       }
+      // 3. Inner table fetch
 
-      // Function to open the question popup
+      getMidTable();
 
-      function openQuestionPopup() {
-        // Create a Kendo DataSource with the hard-coded questions
-
-        const questionDataSource = new kendo.data.DataSource({
-          data: questions,
-        });
-
-        // Initialize the Kendo Grid for questions with checkboxes
-
-        $("#questionPopup1").kendoGrid({
-          dataSource: questionDataSource,
-
-          columns: [
-            {
-              title: "Select",
-
-              template: '<input type="checkbox" class="question-checkbox" />',
-
-              width: 60,
-            },
-
-            { field: "questionId", title: "Question ID" },
-
-            { field: "questionText", title: "Question Text" },
-
-            { field: "difficulty", title: "Difficulty" },
-
-            // Add more columns as needed
-          ],
-        });
-
-        // Show the question popup
-
-        $("#questionPopup1").show("slow");
-      }
-
-      // Event handler for the "Show Categories" button click
-
-      $("#showCategories").on("click", function () {
-        loadCategoryData();
-      });
-
-      $("#addSection").on("click", function () {
-        loadAddCategoryForm();
-      });
-
-      $("#loadAnalytics").on("click", function () {
-        loadAnalyticsData();
-      });
-
-      function loadquestionsSection(cid) {
-        showQuestionsPopup();
-      }
-
-      function showQuestionsPopup() {
-        // Create a Kendo DataSource with the hard-coded questions
-        const overlay = document.getElementById("categories__overlay");
-        overlay.classList.remove("u-display-none");
-
-        const mainContent = document.getElementById("categories__main-content");
-        mainContent.classList.add("u-display-none");
-
-        const questionDataSource = new kendo.data.DataSource({
-          data: questions,
-        });
-
-        // Initialize the Kendo Grid for questions
-
-        $("#addQuestionsGrid").kendoGrid({
-          dataSource: questionDataSource,
-
-          columns: [
-            { field: "questionId", title: "Question ID" },
-
-            { field: "questionText", title: "Question Text" },
-
-            { field: "difficulty", title: "Difficulty" },
-
-            // Add more columns as needed
-          ],
-        });
-
-        // Show the question popup
-
-        $("#questionPopup").show("slow");
-      }
-
-      $("#closeQuestion").on("click", function () {
-        // Hide the questionPopup modal
-
-        $("#questionPopup").hide();
-
-        // Clear the content of the questionGrid
-
-        $("#questionGrid").html("");
-      });
-
-      $("#closeEditSection").on("click", function () {
-        $("#editCategoryPopUp").css("display", "none");
-      });
-
-      $("#closeQuestionform").on("click", function () {
-        // Close the question popup
-
-        console.log("Done");
-
-        document.getElementById("questionPopup1").innerHTML = "";
-      });
-
-      function editCategory(cid) {
-        const popupEdit = document.getElementById("editCategoryPopup");
-        popupEdit.classList.remove("u-display-none");
-
-        const categories__mainContent = document.getElementById(
-          "categories__main-content"
-        );
-        categories__mainContent.classList.add("u-display-none");
-      }
-
-      function deleteCategory(cid) {}
-
-      questions = [
-        { questionId: 1, questionText: "What is 2 + 2?", difficulty: "Easy" },
-
-        {
-          questionId: 2,
-          questionText: "What is the capital of France?",
-          difficulty: "Medium",
-        },
-
-        {
-          questionId: 3,
-          questionText: "What is the square root of 16?",
-          difficulty: "Easy",
-        },
-      ];
-
-      function loadAnalyticsData() {
-        const contentSection = document.querySelector("#main-content");
-
-        const getResultUrl = "/user/userResponses";
-
-        const resultArray = [
+      function getMidTable() {
+        const questions = [
+          { questionId: 1, questionText: "What is 2 + 2?", difficulty: "Easy" },
           {
-            fullName: "John Doe",
-
-            examTitle: "Math Test",
-
-            submitDate: "2023-09-20",
-
-            totalMarks: 90,
-
-            passFail: "Pass",
+            questionId: 2,
+            questionText: "What is the capital of France?",
+            difficulty: "Medium",
           },
-
           {
-            fullName: "Alice Smith",
-
-            examTitle: "Science Quiz",
-
-            submitDate: "2023-09-19",
-
-            totalMarks: 75,
-
-            passFail: "Pass",
+            questionId: 3,
+            questionText: "What is the square root of 16?",
+            difficulty: "Easy",
           },
-
           {
-            fullName: "Bob Johnson",
-
-            examTitle: "History Exam",
-
-            submitDate: "2023-09-18",
-
-            totalMarks: 60,
-
-            passFail: "Fail",
+            questionId: 4,
+            questionText: "Who wrote the play 'Romeo and Juliet'?",
+            difficulty: "Medium",
           },
-
           {
-            fullName: "Eve Williams",
-
-            examTitle: "English Test",
-
-            submitDate: "2023-09-17",
-
-            totalMarks: 85,
-
-            passFail: "Pass",
+            questionId: 5,
+            questionText:
+              "In which year was the Declaration of Independence signed?",
+            difficulty: "Hard",
           },
-
-          {
-            fullName: "Charlie Brown",
-
-            examTitle: "Geography Quiz",
-
-            submitDate: "2023-09-16",
-
-            totalMarks: 70,
-
-            passFail: "Pass",
-          },
-
-          {
-            fullName: "Grace Davis",
-
-            examTitle: "Chemistry Test",
-
-            submitDate: "2023-09-15",
-
-            totalMarks: 55,
-
-            passFail: "Fail",
-          },
-
-          {
-            fullName: "Frank Wilson",
-
-            examTitle: "Physics Exam",
-
-            submitDate: "2023-09-14",
-
-            totalMarks: 92,
-
-            passFail: "Pass",
-          },
+          // Add more questions as needed
         ];
 
-        //     if (resultArray.length > 0) {
+        const mainContent = $("#midGrid__exam");
+        mainContent.empty();
 
-        contentSection.innerHTML = "<h2>Results</h2>";
+        const gridDiv = $("<div id='grid'></div>");
+        mainContent.append(gridDiv);
 
-        const grid = $("#main-content").kendoGrid({
-          dataSource: {
-            data: resultArray,
+        const dataSource1 = new kendo.data.DataSource({
+          data: questions,
+        });
 
-            pageSize: 7,
-          },
+        const grid = gridDiv
+          .kendoGrid({
+            dataSource: dataSource1,
+            columns: [
+              {
+                title: "Select",
+                template: '<input type="checkbox" class="question-checkbox" />',
+                width: 60,
+              },
+              { field: "questionId", title: "Question ID" },
+              { field: "questionText", title: "Question Text" },
+              { field: "difficulty", title: "Difficulty" },
+            ],
+          })
+          .data("kendoGrid");
+      }
 
-          height: 450,
+      function editCategory(cid) {
+        let mainContent = $("#mainContentExam");
+        mainContent.empty(); // Clear the main content
 
-          sortable: true,
+        let editCategoryForm = `
+        <div class="form-container u-flex" style="margin: 3.5rem auto; position: relative">
+          <div class="u-flex-col form__inner-container" style="width: 100%">
+            <h1>Edit Exam</h1>
 
-          pageable: { pageSizes: true },
+            <span id="closeEditCategory" class="popup__icon" style="float: right; cursor: pointer;">&times;</span>
 
-          filterable: true,
+            <form action="#" method="post" style: "position: absolute">
+              <div
+                class="u-flex"
+                style="width: 35%; align-items: baseline; margin-top: 1rem"
+              >
+                <label
+                  for="name"
+                  style="
+                    font-family: Inter;
+                    font-size: 18px;
+                    font-style: normal;
+                    font-weight: 400;
+                    line-height: 17.6px;
+                  "
+                  >Question name:</label
+                >
+                <label class="toggle" style="margin-bottom: -0.1px">
+                  <input class="toggle-input" type="checkbox" />
+                  <span class="toggle-label"></span>
+                  <span class="toggle-handle"></span>
+                </label>
+              </div>
 
-          columns: [
-            { field: "fullName", title: "Full Name" },
+              <label for="negative__marking" style="margin-top: 1.8rem"
+                >Negative marking:</label
+              >
+              <input
+                type="number"
+                id="negative__marking"
+                name="marks"
+                class="form__input-box"
+                required
+              />
 
-            { field: "examTitle", title: "Exam Title" },
+              <label for="cheating"
+                >Chances allowed if new tab opened / tab-switched:</label
+              >
+              <input
+                type="number"
+                id="cheating"
+                name="marks"
+                class="form__input-box"
+                required
+              />
 
-            { field: "submitDate", title: "Date of Submission" },
+              <label for="content">Test link:*</label>
+              <textarea
+                id="content"
+                name="question"
+                class="form__textarea"
+                required
+              ></textarea>
 
-            { field: "totalMarks", title: "Total Marks" },
+              <div class="u-flex-col">
+                <div class="u-flex" style="justify-content: flex"></div>
+              </div>
 
-            { field: "passFail", title: "Pass/Fail" },
+              <div class="button-container-2">
+                <button type="submit" class="add-button">Add</button>
+                <button type="button" class="cancel-button">Cancel</button>
+              </div>
+            </form>
+          </div>
+        </div>
+    `;
 
-            {
-              title: "Actions",
+        mainContent.append(editCategoryForm);
 
-              template:
-                '<button class="k-button k-grid-view-analytic" onclick="viewUserAnalytic(this)">View Analytic</button>',
-            },
-          ],
+        // Add event listener to close the form when the "Close" icon is clicked
+        $("#closeEditCategory").on("click", function () {
+          mainContent.empty(); // Clear the form when closed
         });
       }
 
-      //}})}
+      /////////////////////////////////////////////
+      /// Events handling
+
+      const overlay__exams = document.getElementById("overlay__exams");
+      const show__cards__exam = document.getElementById("show__cards__exam");
+      const create__new__exam__section =
+        document.getElementById("create__new__exam");
+      const create__new__exam__button = document.getElementById(
+        "create__new__exam__button"
+      );
+      const outerGrid__exam = document.getElementById("outerGrid__exam");
+      const closeChoseOverlay__exam = document.getElementById(
+        "closeChoseOverlay__exam"
+      );
+      const selectSection = document.getElementById("popup__button");
+
+      const cancelAddExam = document.getElementById("cancelAddExam");
+      
+      // Cancel the create form
+      cancelAddExam.addEventListener("click", () => {
+        create__new__exam__section.classList.add("u-display-none");
+        outerGrid__exam.classList.remove("u-display-none");
+        getOuterTable();
+      })
+
+      // View all sections
+      function loadquestionsSection(cid) {  
+        overlay__exams.classList.remove("u-display-none");
+      }
+
+      // Add exam
+      show__cards__exam.addEventListener("click", () => {
+        create__new__exam__section.classList.remove("u-display-none");
+        outerGrid__exam.classList.add("u-display-none");
+        selectSection.classList.remove("u-display-one")
+      });
+
+      // Add section
+      create__new__exam__button.addEventListener("click", () => {
+        overlay__exams.classList.remove("u-display-none");
+      });
+
+      // Close popup
+      closeChoseOverlay__exam.addEventListener("click", () => {
+        overlay__exams.classList.add("u-display-none");
+      });
+      
+      // Close popup
+      selectSection.addEventListener("click", () => {
+        overlay__exams.classList.add("u-display-none");
+      });
+
+
     </script>
+
+    <script src=".//js/components/questions.js"></script>
   </body>
 </html>

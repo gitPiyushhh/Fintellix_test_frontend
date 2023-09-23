@@ -32,12 +32,13 @@ body {
 
   font-size: 16px;
   font-weight: 600;
-  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
   cursor: pointer;
   /* color: rgba(0, 0, 0, 0.733); */
   color: whitesmoke;
   text-decoration: none;
   font-family: "inter";
+  transition: all 0.3s;
 }
 
 .h3 {
@@ -45,7 +46,7 @@ body {
 }
 
 .button:hover {
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
 
 .button:active {
