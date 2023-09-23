@@ -155,6 +155,9 @@
       </div>
     </div>
 
+    <div id="mainContent">
+    </div>
+
     <!-- Form -->
     <div
       class="wrapper u-display-none"
@@ -215,7 +218,6 @@
             />
 
             <div class="button-container-2" style="flex-wrap: wrap">
-             
               <button
                 type="button"
                 id="openMidGridBtn"
@@ -225,7 +227,7 @@
                   background-color: #e1dddd55;
                   border: 0.4px solid #1a7aaf;
                   color: #000;
-                  margin-top:  1rem;
+                  margin-top: 1rem;
                 "
               >
                 Choose from Questions
@@ -242,7 +244,10 @@
               style="margin-top: 0.5rem"
             ></div>
 
-            <div class="button-container-2" style="flex-wrap: wrap; margin-top: 3rem">
+            <div
+              class="button-container-2"
+              style="flex-wrap: wrap; margin-top: 3rem"
+            >
               <button type="submit" class="button" style="width: 47%">
                 Add
               </button>
@@ -253,7 +258,6 @@
               >
                 Cancel
               </button>
-              
             </div>
           </form>
         </div>
@@ -432,6 +436,9 @@
           data: selectedRows,
         });
 
+        console.log(selectedRows);
+        console.log(dataSource1);
+
         const mainContent = $("#innerGrid ");
 
         mainContent.empty();
@@ -441,24 +448,18 @@
         mainContent.append(gridDiv);
 
         gridDiv.kendoGrid({
-          dataSource: dataSource1,
+          dataSource: selectedRows,
           height: 250,
           sortable: true,
           pageable: { pageSize: true },
           filterable: true,
           columns: [
-            { field: "cid", title: "cid", width: "50px" },
-
-            { field: "sectionName", title: "sectionName", width: "200px" },
-
-            { field: "category_type", title: "Category Title", width: "200px" },
-
+            { field: "questionId", title: "Question ID" },
+            { field: "questionText", title: "Question Text" },
             {
               title: "Actions",
               template: `
-                      <button class="k-button" onclick="loadquestionsSection(#: cid#)">ViewQuestions</button>
-                            <button class="k-button" onclick="editCategory(#: cid#)">Edit</button>
-                            <button class="k-button" onclick="deleteSection(#: cid#)">Delete</button>
+                            <button class="k-button" onclick="deleteSection(#: questionId#)">Delete</button>
             `,
               width: "200px",
             },
@@ -466,14 +467,49 @@
           footer: "Total: #= kendo.toString(sum, 'c') #",
         });
       }
-      getInnerTable();
 
+      function addSelectedQuestions() {
+        // Get all selected checkboxes
+        const selectedCheckboxes = $(".question-checkbox:checked"); // Extract and store selected question data
+        selectedQuestions = [];
+        selectedCheckboxes.each(function () {
+          const row = $(this).closest("tr");
+          const questionId = row.find("td:eq(1)").text();
+          // Assuming the question ID is in the second column
+          const questionText = row.find("td:eq(2)").text(); // Assuming the question text is in the third column        // Add the selected question to the array
+          selectedRows.push({
+            questionId: questionId,
+            questionText: questionText, // Add other properties as needed
+          });
+        }); // Close the question popup
+      }
       // 3. Inner table fetch
 
       function getMidTable() {
-        const categoriesArray = [
-          { cid: 1, sectionName: "Section 1", category_type: "Category A" },
-          { cid: 2, sectionName: "Section 2", category_type: "Category B" },
+        const questions = [
+          { questionId: 1, questionText: "What is 2 + 2?", difficulty: "Easy" },
+          {
+            questionId: 2,
+            questionText: "What is the capital of France?",
+            difficulty: "Medium",
+          },
+          {
+            questionId: 3,
+            questionText: "What is the square root of 16?",
+            difficulty: "Easy",
+          },
+          {
+            questionId: 4,
+            questionText: "Who wrote the play 'Romeo and Juliet'?",
+            difficulty: "Medium",
+          },
+          {
+            questionId: 5,
+            questionText:
+              "In which year was the Declaration of Independence signed?",
+            difficulty: "Hard",
+          },
+          // Add more questions as needed
         ];
 
         const mainContent = $("#midGrid");
@@ -483,42 +519,69 @@
         mainContent.append(gridDiv);
 
         const dataSource1 = new kendo.data.DataSource({
-          data: categoriesArray,
+          data: questions,
         });
 
         const grid = gridDiv
           .kendoGrid({
             dataSource: dataSource1,
-            height: 250,
-            sortable: true,
-            pageable: { pageSize: true },
-            filterable: true,
-            selectable: "multiple", // Enable multiple row selection
             columns: [
               {
-                selectable: true, // Checkbox for row selection
-                width: "50px",
+                title: "Select",
+                template: '<input type="checkbox" class="question-checkbox" />',
+                width: 60,
               },
-              { field: "cid", title: "cid", width: "50px" },
-              { field: "sectionName", title: "sectionName", width: "200px" },
-              {
-                field: "category_type",
-                title: "Category Title",
-                width: "200px",
-              },
+              { field: "questionId", title: "Question ID" },
+              { field: "questionText", title: "Question Text" },
+              { field: "difficulty", title: "Difficulty" },
             ],
-            footer: "Total: #= kendo.toString(sum, 'c') #",
-            change: function (e) {
-              console.log("changed");
-              // Get selected rows and add them to the selectedRows array
-              selectedRows = this.select().toArray();
-              console.log(this._data);
-            },
           })
           .data("kendoGrid");
       }
-      getMidTable();
 
+      function editCategory(cid) {
+
+        let mainContent = $("#mainContent");
+        mainContent.empty(); // Clear the main content
+
+        let editCategoryForm = `
+        <div class="form-container u-flex" style="height: 80%; position: relative;">
+        <div class="u-flex-col form__inner-container" style="width: 100%;">
+        <h1>Edit Category</h1>
+        <span id="closeEditCategory" class="popup__icon" style="float: right; cursor: pointer;">&times;</span>
+        <form action="#" method="post">
+        <label for="name">Category Name:*</label>
+        <input type="text" id="name" name="name" class="form__input-box" required />
+        <label for="categoryType">Category Type:*</label>
+        <select id="categoryType" class="form__input-box" style="font-size: 14px; color: #565656; padding-right: 1rem;">
+        <option disabled selected value="">Select from options</option>
+        <option value="Programming">Programming</option>
+        <option value="Logical">Logical</option>
+        <option value="Aptitude">Aptitude</option>
+        </select>
+        <label for="time">Time limit (in minutes):</label>
+        <input type="number" id="time" name="email" class="form__input-box" required />
+        <label for="passPercentage">Pass percentage:</label>
+        <input type="number" id="passPercentage" name="email" class="form__input-box" required />
+        <div class="button-container-2">
+        <button type="submit" class="add-button">Save</button>
+        <button type="button" class="cancel-button">Cancel</button>
+        </div>
+        </form>
+        </div>
+        </div>
+    `;
+
+        mainContent.append(editCategoryForm);
+
+        // Add event listener to close the form when the "Close" icon is clicked
+        $("#closeEditCategory").on("click", function () {
+          mainContent.empty(); // Clear the form when closed
+        });
+      }
+      $("#editCategoryButton").on("click", function () {
+        loadEditCategoryForm();
+      });
       /////////////////////////////////////////////
       /// Events handling
       const formDisplayBtn = document.getElementById("category__form__display");
@@ -556,6 +619,7 @@
         add__category__form__popup.classList.remove("u-display-none");
         categories__overlay.classList.add("u-display-none");
         console.log("Heree: " + selectedRows);
+        addSelectedQuestions();
         getInnerTable();
       });
     </script>

@@ -8,8 +8,6 @@
 
     <title>Category Management</title>
 
-    <script src=".//js/components/questions.js"></script>
-
     <!-- Icons -->
     <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
 
@@ -20,14 +18,44 @@
       rel="stylesheet"
     />
 
-    <!-- Kendo Part -->
+    <!-- Kendo UI CSS -->
+
+    <script type="text/javascript" src="lib/jquery.min.js"></script>
+
+    <script type="text/javascript" src="lib/jquery.js"></script>
+    <script src=".//js/components/questions.js"></script>
+
+    <!-- <script type="text/javascript" src="lib/select2.js"></script> -->
 
     <link
       rel="stylesheet"
-      href="https://kendo.cdn.telerik.com/themes/6.7.0/default/default-main.css"
+      type="text/css"
+      media="screen"
+      href="lib/jquery-ui.css"
     />
-    <script src="https://kendo.cdn.telerik.com/2023.2.829/js/jquery.min.js"></script>
-    <script src="https://kendo.cdn.telerik.com/2023.2.829/js/kendo.all.min.js"></script>
+
+    <link
+      rel="stylesheet"
+      type="text/css"
+      media="screen"
+      href="lib/jquery-ui.min.css"
+    />
+
+    <!--Kendo-->
+
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="lib/kendo.default-v2.min.css"
+    />
+
+    <script type="text/javascript" src="./lib/kendo.all.min.js"></script>
+
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="css\font-awesome-4.7.0\css\font-awesome.min.css"
+    />
 
     <!-- <link rel="stylesheet" type="text/css" href="css/font-awesome.css" />  -->
 
@@ -42,42 +70,23 @@
     <script type="text/javascript" src="questionSection.js"></script>
   </head>
   <body>
-    <!-- Form popup -->
-
     <div class="overlay u-display-none" id="categories__overlay">
-      <div id="questionPopup" class="popup">
+      <div
+        id="questionPopup"
+        class="popup"
+        style="transform: translateY(-15px)"
+      >
         <div class="popup__content">
           <span
-            id="closeQuestion"
+            id="closeChoseOverlay"
             class="popup__icon"
             style="float: right; cursor: pointer"
             >&times;</span
           >
 
-          <h3 class="popup__title">Questions</h3>
+          <h3 class="popup__title">Available categories</h3>
 
-          <div id="addQuestionsGrid" class="popup__content">
-            
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Kendo grir popup  -->
-
-    <div class="overlay u-display-none" id="questions__overlay">
-      <div id="questionPopup" class="popup">
-        <div class="popup__content">
-          <span
-            id="closeQuestion2"
-            class="popup__icon"
-            style="float: right; cursor: pointer"
-            >&times;</spanx
-          >
-
-          <h3 class="popup__title">Questions</h3>
-
-          <div id="popupAddQuestions" class="popup__content"></div>
+          <div id="midGrid" class="popup__content"></div>
         </div>
       </div>
     </div>
@@ -135,7 +144,7 @@
             margin-top: 0.5rem;
           "
           href="#"
-          id="showForm"
+          id="category__form__display"
         >
           Add Section
           <iconify-icon
@@ -146,7 +155,116 @@
       </div>
     </div>
 
+    <div id="mainContent">
+    </div>
+
+    <!-- Form -->
     <div
+      class="wrapper u-display-none"
+      id="add__category__form__popup"
+      style="margin-top: 2rem"
+    >
+      <div
+        class="form-container u-flex"
+        style="height: 80%; position: relative"
+      >
+        <div class="u-flex-col form__inner-container" style="width: 100%">
+          <h1>Create section</h1>
+          <span
+            id="formCloseBtn"
+            class="popup__icon"
+            style="float: right; cursor: pointer"
+            >&times;</span
+          >
+
+          <form action="#" method="post">
+            <label for="name">Section name:*</label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              class="form__input-box"
+              required
+            />
+
+            <label for="category">Categories type:*</label>
+            <select
+              id="category"
+              class="form__input-box"
+              style="font-size: 14px; color: #565656; padding-right: 1rem"
+            >
+              <option disabled selected value="">Select from options</option>
+              <option value="easy">Programming</option>
+              <option value="medium">Logical</option>
+              <option value="hard">Aptitude</option>
+            </select>
+
+            <label for="time">Time limit (in minutes):</label>
+            <input
+              type="number"
+              id="time"
+              name="email"
+              class="form__input-box"
+              required
+            />
+
+            <label for="time">Pass percentage:</label>
+            <input
+              type="number"
+              id="time"
+              name="email"
+              class="form__input-box"
+              required
+            />
+
+            <div class="button-container-2" style="flex-wrap: wrap">
+              <button
+                type="button"
+                id="openMidGridBtn"
+                class="button"
+                style="
+                  width: 47%;
+                  background-color: #e1dddd55;
+                  border: 0.4px solid #1a7aaf;
+                  color: #000;
+                  margin-top: 1rem;
+                "
+              >
+                Choose from Questions
+              </button>
+            </div>
+
+            <h3 class="popup__title" style="margin: 1rem 0 1rem">
+              Selected categories
+            </h3>
+
+            <div
+              id="innerGrid"
+              class="popup__content"
+              style="margin-top: 0.5rem"
+            ></div>
+
+            <div
+              class="button-container-2"
+              style="flex-wrap: wrap; margin-top: 3rem"
+            >
+              <button type="submit" class="button" style="width: 47%">
+                Add
+              </button>
+              <button
+                type="button"
+                class="button"
+                style="width: 47%; background-color: #e1dddd; color: #000"
+              >
+                Cancel
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- <div
       class="wrapper u-display-none"
       style="margin-top: 3rem"
       id="categories__main-content"
@@ -225,17 +343,27 @@
           </form>
         </div>
       </div>
-    </div>
+    </div> -->
 
     <!-- Grid  -->
     <div
-      id="main__content"
+      id="outerGrid"
       style="margin-top: 1.5rem"
       class="grid categories__grid"
     ></div>
 
+    <!-- //////////////////////////////////////////////////
+    /////// -->
+
     <script>
-      function getGlobalTable() {
+      /////////////////////////////////////////////
+      /// Table loading
+
+      // Global Data Source
+      let selectedRows = [];
+
+      // 1. Outer grid
+      function getOuterTable() {
         console.log("started");
 
         // Hard-coded categories
@@ -259,33 +387,24 @@
           },
         ];
 
-        // Define a Kendo DataSource with the hard-coded data
-
         const dataSource1 = new kendo.data.DataSource({
           data: categoriesArray,
         });
 
-        // Create and append a div for the grid to the main content
+        const mainContent = $("#outerGrid ");
 
-        const mainContent = $("#main__content");
+        mainContent.empty();
 
-        mainContent.empty(); // Clear the main content
-
-        //const gridDiv = $("<div id='grid'></div>");
         const gridDiv = $("<div id='grid'></div>");
 
         mainContent.append(gridDiv);
 
-        // Initialize the Kendo Grid inside the grid div
-
         gridDiv.kendoGrid({
           dataSource: dataSource1,
-
           height: 250,
           sortable: true,
           pageable: { pageSize: true },
           filterable: true,
-
           columns: [
             { field: "cid", title: "cid", width: "50px" },
 
@@ -303,115 +422,209 @@
               width: "200px",
             },
           ],
+          footer: "Total: #= kendo.toString(sum, 'c') #",
+        });
+      }
+      getOuterTable();
 
+      // 2. Inner table fetch
+
+      function getInnerTable() {
+        // Hard-coded categories
+        console.log(selectedRows)
+        const dataSource1 = new kendo.data.DataSource({
+          data: selectedRows,
+        });
+
+        console.log(selectedRows);
+        console.log(dataSource1);
+
+        const mainContent = $("#innerGrid ");
+
+        mainContent.empty();
+
+        const gridDiv = $("<div id='grid'></div>");
+
+        mainContent.append(gridDiv);
+
+        gridDiv.kendoGrid({
+          dataSource: dataSource1,
+          height: 250,
+          sortable: true,
+          pageable: { pageSize: true },
+          filterable: true,
+          columns: [
+            { field: "questionId", title: "Question ID" },
+            { field: "questionText", title: "Question Text" },
+            {
+              title: "Actions",
+              template: `
+                            <button class="k-button" onclick="deleteSection(#: questionId#)">Delete</button>
+            `,
+              width: "200px",
+            },
+          ],
           footer: "Total: #= kendo.toString(sum, 'c') #",
         });
       }
 
-      getGlobalTable();
+      function addSelectedQuestions() {
+        // Get all selected checkboxes
+        const selectedCheckboxes = $(".question-checkbox:checked"); // Extract and store selected question data
+        selectedQuestions = [];
+        selectedCheckboxes.each(function () {
+          const row = $(this).closest("tr");
+          const questionId = row.find("td:eq(1)").text();
+          // Assuming the question ID is in the second column
+          const questionText = row.find("td:eq(2)").text(); // Assuming the question text is in the third column        // Add the selected question to the array
+          selectedRows.push({
+            questionId: questionId,
+            questionText: questionText, // Add other properties as needed
+          });
+        }); // Close the question popup
+      }
+      // 3. Inner table fetch
 
-      // 2. Create form on click
-      function loadAddSectionForm() {
-        const mainContent = $("#main__content");
+      function getMidTable() {
+        const questions = [
+          { questionId: 1, questionText: "What is 2 + 2?", difficulty: "Easy" },
+          {
+            questionId: 2,
+            questionText: "What is the capital of France?",
+            difficulty: "Medium",
+          },
+          {
+            questionId: 3,
+            questionText: "What is the square root of 16?",
+            difficulty: "Easy",
+          },
+          {
+            questionId: 4,
+            questionText: "Who wrote the play 'Romeo and Juliet'?",
+            difficulty: "Medium",
+          },
+          {
+            questionId: 5,
+            questionText:
+              "In which year was the Declaration of Independence signed?",
+            difficulty: "Hard",
+          },
+          // Add more questions as needed
+        ];
+
+        const mainContent = $("#midGrid");
+        mainContent.empty();
+
+        const gridDiv = $("<div id='grid'></div>");
+        mainContent.append(gridDiv);
+
+        const dataSource1 = new kendo.data.DataSource({
+          data: questions,
+        });
+
+        const grid = gridDiv
+          .kendoGrid({
+            dataSource: dataSource1,
+            columns: [
+              {
+                title: "Select",
+                template: '<input type="checkbox" class="question-checkbox" />',
+                width: 60,
+              },
+              { field: "questionId", title: "Question ID" },
+              { field: "questionText", title: "Question Text" },
+              { field: "difficulty", title: "Difficulty" },
+            ],
+          })
+          .data("kendoGrid");
+      }
+
+      function editCategory(cid) {
+
+        let mainContent = $("#mainContent");
         mainContent.empty(); // Clear the main content
 
-        const sectionForm = `
-            <div class="form-container u-flex" style="height: 80%; position: relative;">
-            <div class="u-flex-col form__inner-container" style="width: 100%;">
-            <h1>Create section</h1>
-            <span id="closeEditQuestion" class="popup__icon" style="float: right; cursor: pointer;">&times;</span>
-            <form action="#" method="post">
-            <label for="name">Section name:*</label>
-            <input type="text" id="name" name="name" class="form__input-box" required />
-            <label for="category">Categories type:*</label>
-            <select id="category" class="form__input-box" style="font-size: 14px; color: #565656; padding-right: 1rem;">
-            <option disabled selected value="">Select from options</option>
-            <option value="easy">Programming</option>
-            <option value="medium">Logical</option>
-            <option value="hard">Aptitude</option>
-            </select>
-            <label for="time">Time limit (in minutes):</label>
-            <input type="number" id="time" name="email" class="form__input-box" required />
-            <label for="passPercentage">Pass percentage:</label>
-            <input type="number" id="passPercentage" name="email" class="form__input-box" required />
-            <div class="button-container-2">
-            <button type="submit" class="add-button">Add</button>
-            <button type="button" class="cancel-button">Cancel</button>
-            </div>
-            </form>
-            </div>
-            </div>
-                `;
+        let editCategoryForm = `
+        <div class="form-container u-flex" style="height: 80%; position: relative;">
+        <div class="u-flex-col form__inner-container" style="width: 100%;">
+        <h1>Edit Category</h1>
+        <span id="closeEditCategory" class="popup__icon" style="float: right; cursor: pointer;">&times;</span>
+        <form action="#" method="post">
+        <label for="name">Category Name:*</label>
+        <input type="text" id="name" name="name" class="form__input-box" required />
+        <label for="categoryType">Category Type:*</label>
+        <select id="categoryType" class="form__input-box" style="font-size: 14px; color: #565656; padding-right: 1rem;">
+        <option disabled selected value="">Select from options</option>
+        <option value="Programming">Programming</option>
+        <option value="Logical">Logical</option>
+        <option value="Aptitude">Aptitude</option>
+        </select>
+        <label for="time">Time limit (in minutes):</label>
+        <input type="number" id="time" name="email" class="form__input-box" required />
+        <label for="passPercentage">Pass percentage:</label>
+        <input type="number" id="passPercentage" name="email" class="form__input-box" required />
+        <div class="button-container-2">
+        <button type="submit" class="add-button">Save</button>
+        <button type="button" class="cancel-button">Cancel</button>
+        </div>
+        </form>
+        </div>
+        </div>
+    `;
 
-        mainContent.append(sectionForm);
+        mainContent.append(editCategoryForm);
 
         // Add event listener to close the form when the "Close" icon is clicked
-        $("#closeEditQuestion").on("click", function () {
+        $("#closeEditCategory").on("click", function () {
           mainContent.empty(); // Clear the form when closed
-          getGlobalTable();
         });
       }
+      $("#editCategoryButton").on("click", function () {
+        loadEditCategoryForm();
+      });
+      /////////////////////////////////////////////
+      /// Events handling
+      const formDisplayBtn = document.getElementById("category__form__display");
+      const formCloseBtn = document.getElementById("formCloseBtn");
+      const openMidGridBtn = document.getElementById("openMidGridBtn");
+      const closeChoseOverlay = document.getElementById("closeChoseOverlay");
 
-      // Add click event handler for the "Add Section" button
-      $("#showForm").on("click", function () {
-        loadAddSectionForm();
+      const categories__overlay = document.getElementById(
+        "categories__overlay"
+      );
+      const outerGrid = document.getElementById("outerGrid");
+      const add__category__form__popup = document.getElementById(
+        "add__category__form__popup"
+      );
+
+      formDisplayBtn.addEventListener("click", () => {
+        outerGrid.classList.add("u-display-none");
+        add__category__form__popup.classList.remove("u-display-none");
+        getInnerTable();
       });
 
-      // 2. Popup questions open
-      function loadquestionsSection() {
-        // Function to load and display the "Edit Category" form (similar to the "Add Section" form)
+      formCloseBtn.addEventListener("click", () => {
+        outerGrid.classList.remove("u-display-none");
+        add__category__form__popup.classList.add("u-display-none");
+      });
 
-      }
+      openMidGridBtn.addEventListener("click", () => {
+        outerGrid.classList.add("u-display-none");
+        add__category__form__popup.classList.add("u-display-none");
+        categories__overlay.classList.remove("u-display-none");
+        getMidTable();
+      });
 
-      //////////////////////////////////////////
-      ///
-      function editCategory(cid) {
-    const mainContent = $("#main__content");
-    mainContent.empty(); // Clear the main content
-    const editCategoryForm = `
-<div class="form-container u-flex" style="height: 80%; position: relative;">
-<div class="u-flex-col form__inner-container" style="width: 100%;">
-<h1>Edit Category</h1>
-<span id="closeEditCategoryPopup" class="popup__icon" style="float: right; cursor: pointer;">&times;</span>
-<form action="#" method="post">
-<label for="name">Category Name:*</label>
-<input type="text" id="name" name="name" class="form__input-box" required />
-<label for="categoryType">Category Type:*</label>
-<select id="categoryType" class="form__input-box" style="font-size: 14px; color: #565656; padding-right: 1rem;">
-<option disabled selected value="">Select from options</option>
-<option value="Programming">Programming</option>
-<option value="Logical">Logical</option>
-<option value="Aptitude">Aptitude</option>
-</select>
-<label for="time">Time limit (in minutes):</label>
-<input type="number" id="time" name="email" class="form__input-box" required />
-<label for="passPercentage">Pass percentage:</label>
-<input type="number" id="passPercentage" name="email" class="form__input-box" required />
-<div class="button-container-2">
-<button type="submit" class="add-button">Save</button>
-<button type="button" class="cancel-button">Cancel</button>
-</div>
-</form>
-</div>
-</div>
-    `;
-    mainContent.append(editCategoryForm);
-    // Add event listener to close the form when the "Close" icon is clicked
-    $("#closeEditCategoryPopup").on("click", function () {
-        mainContent.empty(); // Clear the form when closed
-        getGlobalTable()
-    });
-}
-
- 
-
-// // Add click event handler for the "Edit Category" button (assuming you have a button with id "editCategoryButton")
-// $("#editCategoryButton").on("click", function () {
-//     loadEditCategoryForm();
-// });
-
-
-      console.log("Completed");
+      closeChoseOverlay.addEventListener("click", () => {
+        add__category__form__popup.classList.remove("u-display-none");
+        categories__overlay.classList.add("u-display-none");
+        console.log("Heree: " + selectedRows);
+        addSelectedQuestions();
+        getInnerTable();
+        selectedRows = [];
+      });
     </script>
+
+    <script src=".//js/components/questions.js"></script>
   </body>
 </html>
