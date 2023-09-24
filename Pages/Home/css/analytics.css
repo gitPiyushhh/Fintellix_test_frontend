@@ -1,0 +1,84 @@
+.analytics__card {
+    position: relative;
+}
+
+.analytics__sub-title {
+  font-family: Inter;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 200;
+  margin-top: -0.5rem;
+}
+
+.analytics__popup {
+    width: 60%;
+}
+
+.analytics__field {
+  width: 90%;
+  border-radius: 0.5rem;
+  padding: 0rem 2rem;
+  cursor: pointer;
+  transition: all 0.3s;
+  position: relative;
+}
+
+.analytics__label-overlay {
+  position: absolute;
+  left: 0;
+  width: 1% ;
+  height: 50px;
+  width: fit-content;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: all 0.3s;
+  background-color:  #1a7baf7a;
+  z-index: 11;
+}
+
+@keyframes moveLeftToRight {
+  0% {
+    width: 1%;
+    opacity: 100%;
+  }
+  50% {
+    width: 110%;
+    opacity: 40%;
+  }
+  100% {
+    width: 1%;
+    opacity: 100%;
+  }
+}
+
+.analytics__label {
+  font-family: Inter;
+  font-size: 16px;
+  font-style: bold;
+  font-weight: 200;
+  margin: 0rem;
+}
+
+.analytics__data {
+  font-family: Inter;
+  font-size: 16px;
+  font-style: 700;
+  font-weight: 200;
+  margin-left: 1rem;
+}
+
+.analytics__result {
+    position: absolute;
+    bottom: -25px;
+    right: 3rem;
+    font-size: 3.2rem;
+    /* transform: rotate(-15deg); */
+    opacity: 30%;
+    font-family: 'Kenia', cursive;
+}
+
+.analytics__chart {
+    margin-top: -7rem;
+    width: 300px !important;
+    height: auto !important;
+}

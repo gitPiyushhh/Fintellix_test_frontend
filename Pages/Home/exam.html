@@ -199,90 +199,7 @@
           </div>
         </div>
 
-        <div class="exam__content u-flex">
-          <div class="exam__card card" style="position: relative">
-            <span
-              id="closeChoseOverlay"
-              class="popup__icon"
-              style="float: right; cursor: pointer; top: 10px; right: 10px"
-              >&times;</span
-            >
-
-            <h6 class="exam__title">Java basics</h6>
-            <div
-              class="u-flex-col card__inner"
-              style="
-                justify-content: space-between;
-                width: 100%;
-                margin-top: 0.2rem;
-                align-items: flex-start;
-              "
-            >
-              <p
-                class="card__main-text exam__card--text"
-                style="color: #1a7aaf"
-              >
-                Total questions:
-                <span style="color: #565656; margin-top: 0; font-weight: bold">
-                  99</span
-                >
-              </p>
-            </div>
-          </div>
-
-          <div class="exam__card card">
-            <h6 class="exam__title">Java basics</h6>
-            <div
-              class="u-flex-col card__inner"
-              style="
-                justify-content: space-between;
-                width: 100%;
-                margin-top: 0.2rem;
-                align-items: flex-start;
-              "
-            >
-              <p
-                class="card__main-text exam__card--text"
-                style="color: #1a7aaf"
-              >
-                Total questions:
-                <span style="color: #565656; margin-top: 0; font-weight: bold">
-                  99</span
-                >
-              </p>
-
-              <p
-                class="card__main-text exam__card--text"
-                style="margin-top: 0.8rem; color: #1a7aaf"
-              ></p>
-            </div>
-          </div>
-
-          <div class="exam__card card">
-            <h6 class="exam__title">Java basics</h6>
-            <div
-              class="u-flex-col card__inner"
-              style="
-                justify-content: space-between;
-                width: 100%;
-                margin-top: 0.2rem;
-                align-items: flex-start;
-              "
-            >
-              <p
-                class="card__main-text exam__card--text"
-                style="color: #1a7aaf"
-              >
-                Total questions:
-                <span style="color: #565656; margin-top: 0; font-weight: bold">
-                  99</span
-                >
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <div class="form-container u-flex" style="margin: 3.5rem auto">
+        <div class="form-container u-flex" style="margin: 2rem auto">
           <div class="u-flex-col form__inner-container" style="width: 100%">
             <h1>Create new Exam</h1>
             <form action="#" method="post">
@@ -331,12 +248,17 @@
               />
 
               <label for="content">Test link:*</label>
-              <input
+                <div class="u-flex">
+                  <input
                 id="text"
                 name="question"
                 class="form__textarea form__input-box"
                 required
               ></text>
+                  <button class="button" style="padding: 10px 15px; background-color: #1a7aaf; margin-left: 1.2rem; display: flex; color: #fff;">
+                    Generate&#128279;
+                  </button>
+                </div>
 
               <div class="u-flex-col">
                 <div class="u-flex" style="justify-content: flex"></div>
@@ -346,6 +268,16 @@
                 <button type="submit" class="add-button">Add</button>
                 <button type="button" class="cancel-button" id="cancelAddExam">Cancel</button>
               </div>
+
+              <h3 class="popup__title" style="margin: 3.5rem 0 1rem">
+                Selected scetions
+              </h3>
+
+              <div
+              id="innerGrid"
+              class="popup__content"
+              style="margin-top: 0.5rem"
+            ></div>
             </form>
           </div>
         </div>
@@ -648,7 +580,7 @@
         "closeChoseOverlay__exam"
       );
       const selectSection = document.getElementById("popup__button");
-
+      const exam__content = document.getElementById("exam__content");
       const cancelAddExam = document.getElementById("cancelAddExam");
       
       // Cancel the create form
@@ -665,9 +597,10 @@
 
       // Add exam
       show__cards__exam.addEventListener("click", () => {
+        getInnerTable();
         create__new__exam__section.classList.remove("u-display-none");
         outerGrid__exam.classList.add("u-display-none");
-        selectSection.classList.remove("u-display-one")
+        selectSection.classList.remove("u-display-one");
       });
 
       // Add section
@@ -683,8 +616,9 @@
       // Close popup
       selectSection.addEventListener("click", () => {
         overlay__exams.classList.add("u-display-none");
+        addSelectedQuestions();
+        getInnerTable();
       });
-
 
     </script>
 

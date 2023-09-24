@@ -516,6 +516,8 @@
       const openMidGridBtn = document.getElementById("openMidGridBtn");
       const closeChoseOverlay = document.getElementById("closeChoseOverlay");
 
+      const popup__button = document.getElementById("popup__button");
+
       const categories__overlay = document.getElementById(
         "categories__overlay"
       );
@@ -557,11 +559,13 @@
         getInnerTable();
         selectedRows = [];
 
-        if(isIndex) {
-          add__category__form__popup.classList.add("u-display-none")
-        }
-
+        // if(isIndex) {
+        //   add__category__form__popup.classList.add("u-display-none")
+        // }
       });
+
+      
+
     </script>
 
     <script src=".//js/components/questions.js"></script>

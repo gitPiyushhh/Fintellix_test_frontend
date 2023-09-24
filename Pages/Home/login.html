@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="./css/createUser.css" />
     <link rel="stylesheet" href="./css/navbar.css" />
     <link rel="stylesheet" href="./css/form.css" />
+    <link rel="stylesheet" href="./css/ut.css" />
     <title>Fintellix Test | Add user</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -74,74 +75,51 @@
         </ul>
       </nav>
 
-    <div class="wrapper" style="margin-top: 3rem">
-      <div class="form-container u-flex">
-        <img src="./../../Drawables/login.svg" alt="Login image" class="form__image">
+    <div class="wrapper" style="margin-top: 3rem; height: fit-content;" id="login__form" >
+      <div class="form-container u-flex" style="height: fit-content;">
+        <img src="./../../Drawables/loginUser.svg" alt="Login image" >
         <div class="u-flex-col form__inner-container">
-          <h1>Create user</h1>
+          <h1 style="margin-top: 1rem;">Login</h1>
           <form action="#" method="post">
-            <label for="name">User name:</label>
-            <input type="text" id="name" name="name" class="form__input-box" required />
+            
+            <label for="email">Email id:</label>
+            <input
+              type="email"
+              id="login__email"
+              name="email"
+              class="form__input-box"     
+              required
+            />
 
             <label for="password">Password:</label>
             <input
               type="password"
-              id="password"
+              id="login__password"
               name="email"
               class="form__input-box"
               required
             />
-
-            <label for="firstName">First name:</label>
-            <input
-              type="text"
-              id="firstName"
-              name="email"
-              class="form__input-box"
-              required
-            />
-
-            <label for="lastName">Last name:</label>
-            <input
-              type="text"
-              id="lastName"
-              name="email"
-              class="form__input-box"
-              required
-            />
-
-            <label for="email">Email id:</label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              class="form__input-box"
-              required
-            />
-
-            <label for="phone">Phone number:</label>
-            <input
-              type="tel"
-              id="phone"
-              name="email"
-              class="form__input-box"
-              required
-            />
-
-            <div class="u-flex" style=" justify-content: flex-start; align-items: baseline;">
-                <label for="isAdmin">Is Admin:</label>
-                <input type="checkbox" id="isAdmin" name="yesNoDropdown" class="form__input-checkbox" style="margin-left: 0.75rem; width: 17px;
-                height: 17px; margin-bottom: -100px;">
-                </input>
-            </div>
 
             <div class="button-container-2">
-              <button type="submit" class="add-button">Add</button>
-              <button type="button" class="cancel-button">Cancel</button>
-            </div>
+               <button type="submit" class="add-button">Add</button>
+               <button type="button" class="cancel-button" id="login__cancel">Cancel</button>
+             </div>
+
           </form>
         </div>
       </div>
     </div>
+
+    <script>
+      const loginCloseBtn = document.getElementById("login__cancel");
+      const LoginFormElem = document.getElementById("login__form");
+
+      loginCloseBtn.addEventListener("click", () => {
+         document.getElementById("login__email").value = '';
+         document.getElementById("login__password").value = '';
+      })
+
+    </script>
+
   </body>
 </html>

@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Category Management</title>
+
+    <!-- Include Chart.js via CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- Icons -->
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700&family=Open+Sans:ital,wght@0,300;0,400;0,500;1,300;1,600&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Kendo UI CSS -->
+
+    <script type="text/javascript" src="lib/jquery.min.js"></script>
+
+    <script type="text/javascript" src="lib/jquery.js"></script>
+    <script src=".//js/components/questions.js"></script>
+
+    <!-- <script type="text/javascript" src="lib/select2.js"></script> -->
+
+    <link
+      rel="stylesheet"
+      type="text/css"
+      media="screen"
+      href="lib/jquery-ui.css"
+    />
+
+    <link
+      rel="stylesheet"
+      type="text/css"
+      media="screen"
+      href="lib/jquery-ui.min.css"
+    />
+
+    <!--Kendo-->
+
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="lib/kendo.default-v2.min.css"
+    />
+
+    <script type="text/javascript" src="./lib/kendo.all.min.js"></script>
+
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="css\font-awesome-4.7.0\css\font-awesome.min.css"
+    />
+
+    <!-- <link rel="stylesheet" type="text/css" href="css/font-awesome.css" />  -->
+
+    <link rel="stylesheet" href="./css/addQuestion.css" />
+    <link rel="stylesheet" href="./css/createUser.css" />
+    <link rel="stylesheet" href="./css/navbar.css" />
+    <link rel="stylesheet" href="./css/ulitlities.css" />
+    <link rel="stylesheet" href="./css/form.css" />
+    <link rel="stylesheet" href="./css/popup.css" />
+    <link rel="stylesheet" href="./css/questionsCustom.css" />
+    <link rel="stylesheet" href="./css/exam.css" />
+    <link rel="stylesheet" href="./css/scrollbar.css" />
+    <link rel="stylesheet" href="./css/analytics.css" />
+
+    <script type="text/javascript" src="questionSection.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kenia&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <div class="overlay u-display-none" id="overlay__exams">
+      <div
+        id="questionPopup"
+        class="popup analytics__popup"
+        style="transform: translateY(-15px)"
+      >
+        <div class="popup__content">
+          <span
+            id="closeChoseOverlay__exam"
+            class="popup__icon"
+            style="float: right; cursor: pointer"
+            >&times;</span
+          >
+
+          <h3 class="popup__title">Bhavesh Agarwal</h3>
+          <h3 class="analytics__sub-title">bhaveshhhagarwal@gmail.com</h3>
+
+          <div class="ananlytics__card">
+          </div>
+
+          <div class="u-flex">
+            <!-- 1. Data -->
+            <div class="u-flex-col" style="width: 50%; margin-top: 2rem;">
+                <div class="u-flex analytics__field">
+
+                    <h5 class="analytics__label">Programming and problem solving: </h5>
+                    <h5 class="analytics__data">100</h5>
+                    
+                    <div class="analytics__label-overlay">&nbsp;</div>
+                </div>
+
+                <div class="u-flex analytics__field">
+
+                    <h5 class="analytics__label">Logical reasoning: </h5>
+                    <h5 class="analytics__data">100</h5>
+                    
+                    <div class="analytics__label-overlay">&nbsp;</div>
+                </div>
+                
+                <div class="u-flex analytics__field">
+
+                    <h5 class="analytics__label">Aptitude: </h5>
+                    <h5 class="analytics__data">100</h5>
+                    
+                    <div class="analytics__label-overlay">&nbsp;</div>
+                </div>  
+
+                <div class="u-flex analytics__field" style="background-color: #eeeeef; margin-top: 0.5rem;">
+
+                    <h5 class="analytics__label" style="font-weight: 500;">Total: </h5>
+                    <h5 class="analytics__data">300/300</h5>
+                </div>  
+                
+                <div class="u-flex" style="width: 140%; margin-top: 2rem;">
+                    <div class="u-flex" style="width: fit-content;">
+                        <div class="u-flex" style="width: 20px; height: 20px; border-radius: 2px;
+                        background-color: #3AF336;">
+                            <div>&nbsp;</div>
+                        </div>
+            
+                        <span style="font-size: 14px; font-family: 'inter'; margin-left: 0.8rem;">Correct answers</span>
+                      </div>
+            
+                      <div class="u-flex" style="width: fit-content;">
+                        <div class="u-flex" style="width: 20px; height: 20px; border-radius: 2px;
+                        background-color: #F33636;">
+                            <div>&nbsp;</div>
+                        </div>
+            
+                        <span style="font-size: 14px; font-family: 'inter'; margin-left: 0.8rem;">Incorrect answers</span>
+                      </div>
+            
+                      <div class="u-flex" style="width: fit-content;">
+                        <div class="u-flex" style="width: 20px; height: 20px; border-radius: 2px;
+                        background-color: #54585A;">
+                            <div>&nbsp;</div>
+                        </div>
+            
+                        <span style="font-size: 14px; font-family: 'inter'; margin-left: 0.8rem;">Unattempted</span>
+                      </div>
+                  </div>
+                </div>
+
+                <!-- 2. Chart -->
+                <div class="u-flex">
+                    <canvas id="myPieChart" class="analytics__chart"></canvas>
+                </div>
+            </div>
+    
+            <h3 class="analytics__result" style="color: #3AF336;">
+                Passed
+            </h3>
+
+          </div>
+        </div>
+    </div>
+
+    <nav class="navbar">
+      <ul class="u-flex">
+        <a class="logo" href="./index.html" style="cursor: pointer">
+          <img
+            src="./../../Drawables/FIntellix Logo.svg"
+            alt="Website logo"
+            class="navbar__logo"
+          />
+        </a>
+        <div class="u-flex">
+          <li class="dropdown">
+            <a href="#" class="dropbtn">Home</a>
+          </li>
+          <li class="dropdown">
+            <a href="./questions.html" class="dropbtn">Questions</a>
+          </li>
+          <li class="dropdown">
+            <a href="./categories.html" class="dropbtn">Categories</a>
+          </li>
+          <li>
+            <a href="#" class="dropbtn" style="text-decoration: none"
+              >Analytics</a
+            >
+          </li>
+
+          <li>
+            <a href="#" class="dropbtn" style="text-decoration: none">Exams</a>
+          </li>
+
+          <li>
+            <a href="./user.html" class="dropbtn" style="text-decoration: none"
+              >Users</a
+            >
+          </li>
+
+          <li class="userAvatar" style="margin-left: 1rem"></li>
+        </div>
+      </ul>
+    </nav>
+
+    <!-- Form -->
+    <div
+      class="wrapper u-display-none"
+      style="margin-top: 2rem"
+      id="create__new__exam"
+    >
+      <div class="u-flex-col" style="width: 100vw">
+        <div class="user__button">
+          <div class="user__button-inner" style="justify-content: flex-end">
+            <a
+              class="button u-flex"
+              style="
+                background-color: transparent;
+                border: 1px solid #1a7aaf;
+                color: #1a7aaf;
+                justify-self: flex-end;
+                padding: 0.75rem 1.5rem;
+                margin-top: -2rem;
+                box-shadow: none;
+              "
+              href="#"
+              id="create__new__exam__button"
+            >
+              Add a new section
+              <iconify-icon
+                icon="zondicons:add-outline"
+                style="margin-left: 8px"
+              ></iconify-icon>
+            </a>
+          </div>
+        </div>
+
+        <div class="form-container u-flex" style="margin: 2rem auto">
+          <div class="u-flex-col form__inner-container" style="width: 100%">
+            <h1>Create new Exam</h1>
+            <form action="#" method="post">
+              <div
+                class="u-flex"
+                style="width: 35%; align-items: baseline; margin-top: 1rem"
+              >
+                <label
+                  for="name"
+                  style="
+                    font-family: Inter;
+                    font-size: 18px;
+                    font-style: normal;
+                    font-weight: 400;
+                    line-height: 17.6px;
+                  "
+                  >Question name:</label
+                >
+                <label class="toggle" style="margin-bottom: -0.1px">
+                  <input class="toggle-input" type="checkbox" />
+                  <span class="toggle-label"></span>
+                  <span class="toggle-handle"></span>
+                </label>
+              </div>
+
+              <label for="nameExam" style="margin-top: 1.8rem"
+                >Name of exam:</label
+              >
+              <input
+                type="text"
+                id="nameExam"
+                name="marks"
+                class="form__input-box"
+                required
+              />
+
+              <label for="cheating"
+                >Chances allowed if new tab opened / tab-switched:</label
+              >
+              <input
+                type="number"
+                id="cheating"
+                name="marks"
+                class="form__input-box"
+                required
+              />
+
+              <label for="content">Test link:*</label>
+                <div class="u-flex">
+                  <input
+                id="text"
+                name="question"
+                class="form__textarea form__input-box"
+                required
+              ></text>
+                  <button class="button" style="padding: 10px 15px; background-color: #1a7aaf; margin-left: 1.2rem; display: flex; color: #fff;">
+                    Generate&#128279;
+                  </button>
+                </div>
+
+              <div class="u-flex-col">
+                <div class="u-flex" style="justify-content: flex"></div>
+              </div>
+
+              <div class="button-container-2">
+                <button type="submit" class="add-button">Add</button>
+                <button type="button" class="cancel-button" id="cancelAddExam">Cancel</button>
+              </div>
+
+              <h3 class="popup__title" style="margin: 3.5rem 0 1rem">
+                Selected scetions
+              </h3>
+
+              <div
+              id="innerGrid"
+              class="popup__content"
+              style="margin-top: 0.5rem"
+            ></div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Grid  -->
+    <div
+      id="outerGrid__exam"
+      style="margin-top: 3.5rem"
+      class="grid categories__grid"
+    ></div>
+
+    <!-- //////////////////////////////////////////////////
+    /////// -->
+
+    <script>
+      /////////////////////////////////////////////
+      /// Table loading
+
+      // Global Data Source
+      let selectedRows = [];
+
+      // 1. Outer grid
+      function getOuterTable() {
+        console.log("started");
+
+        // Hard-coded categories
+        const categoriesArray = [
+        {
+            fullName: "Bhavesh agarwal",
+            examTitle: "Campus 2023",
+            marks: 85,
+            result: "Pass",
+            cid: 1, // Example ID, you can replace with actual IDs
+        }
+        ];
+
+
+        const dataSource1 = new kendo.data.DataSource({
+          data: categoriesArray,
+        });
+
+        const mainContent = $("#outerGrid__exam");
+
+        mainContent.empty();
+
+        const gridDiv = $("<div id='grid'></div>");
+
+        mainContent.append(gridDiv);
+
+        gridDiv.kendoGrid({
+          dataSource: dataSource1,
+          height: 250,
+          sortable: true,
+          pageable: { pageSize: true },
+          filterable: true,
+          columns: [
+            { field: "fullName", title: "Full name", width: "150px" },
+
+            { field: "examTitle", title: "Exam title", width: "150px" },
+
+            { field: "marks", title: "Marks", width: "50px" },
+            { field: "result", title: "Result", width: "70px" },
+
+            {
+              title: "Actions",
+              template: `
+                      <button class="k-button" onclick="viewAnalytics(#: cid#)">Details</button>
+            `,
+              width: "50px",
+            },
+          ],
+          footer: "Total: #= kendo.toString(sum, 'c') #",
+        });
+      }
+      getOuterTable();
+
+    ///////////////////////////////////////
+    /// Creating chart
+    
+    function showChart() {
+        console.log("hiii")
+
+        const data = {
+        datasets: [{
+            data: [60, 40, 10], // Data values
+            backgroundColor: [
+                '#3AF336',
+                '#F33636',
+                '#54585A',
+            ],
+        }]
+    };
+
+    // Get the canvas element
+    const ctx = document.getElementById('myPieChart').getContext('2d');
+
+    // Create the pie chart
+    const myPieChart = new Chart(ctx, {
+        type: 'pie', // Type of chart (pie chart)
+        data: data,
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+        },
+    });
+
+    }
+
+    
+      /////////////////////////////////////////////
+      /// Events handling
+
+      const overlay__exams = document.getElementById("overlay__exams");
+      const outerGrid__exam = document.getElementById("outerGrid__exam");
+      const closeChoseOverlay__exam = document.getElementById(
+        "closeChoseOverlay__exam"
+      );
+      
+      function viewAnalytics(cid) {
+        overlay__exams.classList.remove("u-display-none");
+        showChart();
+      }
+      
+
+      // Close popup
+      closeChoseOverlay__exam.addEventListener("click", () => {
+        overlay__exams.classList.add("u-display-none");
+      });
+      
+    </script>
+
+    <script src=".//js/components/questions.js"></script>
+  </body>
+</html>
